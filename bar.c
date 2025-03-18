@@ -25,5 +25,13 @@ int main (void) {
     printf("|                            | \n");
     printf("#============================# \n");
 
+    //TELA LOGIN
+    printf("#============================# \n");
+    printf("|            LOGIN           | \n");
+    printf("|                            | \n");
+    printf("|  Login:                    | \n");
+    printf("|  Senha:                    | \n");
+    printf("|                            | \n");
+    printf("#============================# \n");
     return 0;
 }
