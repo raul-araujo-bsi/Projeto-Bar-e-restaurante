@@ -33,5 +33,13 @@ int main (void) {
     printf("|  Senha:                    | \n");
     printf("|                            | \n");
     printf("#============================# \n");
+
+    //TELA DE SAÍDA
+    printf("#============================# \n");
+    printf("|                            | \n");
+    printf("|    OBRIGADO PELA VISITA!   | \n");
+    printf("|       ATÉ A PRÓXIMA!       | \n");
+    printf("|                            | \n");
+    printf("#============================# \n");
     return 0;
 }
