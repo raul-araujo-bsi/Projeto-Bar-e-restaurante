@@ -7,7 +7,7 @@ int main (void) {
     printf("|                            | \n");
     printf("|        1 - CADASTRO        | \n");
     printf("|        2 - LOGIN           | \n");
-    printf("|        3 - SAIR            | \n");
+    printf("|        0 - SAIR            | \n");
     printf("|                            | \n");
     printf("#============================# \n");
 
@@ -42,6 +42,19 @@ int main (void) {
     printf("|                            | \n");
     printf("#============================# \n");
 
+    //TELA DE LOGIN - CLIENTE
+    printf("#============================# \n");
+    printf("|        BEM-VINDO!          | \n");
+    printf("|Escolha uma opção a seguir: | \n");
+    printf("|                            | \n");
+    printf("|  1 - Consultar cardápio    | \n");
+    printf("|  2 - Realizar pedido       | \n");
+    printf("|  3 - Verificar pedido      | \n");
+    printf("|  4 - Ajustar cadastro      | \n");
+    printf("|  0 - sair                  | \n");
+    printf("|                            | \n");
+    printf("#============================# \n");
+
     //TELA DE CADASTRO DE PRODUTO
     printf("#============================# \n");
     printf("|    CADASTRO DE PRODUTOS    | \n");
@@ -52,6 +65,7 @@ int main (void) {
     printf("|  Valor de compra:          | \n");    
     printf("|  Margem de lucro:          | \n");
     printf("|                            | \n");
-    printf("#============================# \n");   
+    printf("#============================# \n");
+
     return 0;
 }
