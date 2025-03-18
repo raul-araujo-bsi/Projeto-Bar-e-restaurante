@@ -2,10 +2,14 @@
 
 int main (void) {
 
-    printf("Sistema utilizado para gerenciamento de bares e restaurantes \n");
-
-    printf("bye \n");
-
+    //TELA PRINCIPAL
+    printf("#===========================# \n");
+    printf("|                           | \n");
+    printf("|       1 - CADASTRO        | \n");
+    printf("|       2 - LOGIN           | \n");
+    printf("|       3 - SAIR            | \n");
+    printf("|                           | \n");
+    printf("#===========================# \n");
 
     return 0;
 }
