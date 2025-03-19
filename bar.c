@@ -69,7 +69,6 @@ int main (void) {
     printf("|                            | \n");
     printf("#============================# \n");
 
-
     //TELA DE CADASTRO DE PRODUTO
     printf("#============================# \n");
     printf("|    CADASTRO DE PRODUTOS    | \n");
@@ -77,8 +76,7 @@ int main (void) {
     printf("|  Fornecedor:               | \n");
     printf("|  Produto:                  | \n");
     printf("|  Quantidade:               | \n");
-    printf("|  Valor de compra:          | \n");    
-    printf("|  Margem de lucro:          | \n");
+    printf("|  Valor:                    | \n");
     printf("|                            | \n");
     printf("#============================# \n");
 
