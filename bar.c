@@ -1,5 +1,14 @@
 #include <stdio.h>
 
+//ASSINATURA DAS FUNÇÕES
+void tela_principal(void);
+void cadastro_cliente(void);
+void login(void);
+void menu_cliente(void);
+void menu_adm(void);
+void cadastro_produto(void);
+
+
 int main (void) {
 
     //TELA PRINCIPAL
@@ -64,7 +73,8 @@ int main (void) {
     printf("|  2 - Ver produtos          | \n");
     printf("|  3 - Editar produtos       | \n");
     printf("|  4 - Excluir produtos      | \n");
-    printf("|  5 - Relatórios            | \n");
+    printf("|  5 - Vendas                | \n");
+    printf("|  6 - Relatórios            | \n");
     printf("|  0 - Sair                  | \n");
     printf("|                            | \n");
     printf("#============================# \n");
