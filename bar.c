@@ -45,12 +45,11 @@ void cadastro(void) {
 void pedido(void) {
     printf("#============================# \n");
     printf("|           PEDIDO           | \n");
-    printf("|                            | \n");
-    printf("|  Id do pedido:             | \n");
-    printf("|  Mesa:                     | \n");
-    printf("|  Id do produto:            | \n");    
-    printf("|  Quantidade:               | \n");
-    printf("|                            | \n");
+    printf("#============================# \n");
+    printf("   Id do pedido:               \n");
+    printf("   Mesa:                       \n");
+    printf("   Id do produto:              \n");    
+    printf("   Quantidade:                 \n");
     printf("#============================# \n");
 }
 void resumo_pedido(void) {
@@ -111,4 +110,10 @@ void cadastro_produto(void) {
     printf("|  Valor:                    | \n");
     printf("|                            | \n");
     printf("#============================# \n");
+}
+void produtos(void) {
+    printf("#=================================# \n");
+    printf("|              PRODUTOS           | \n");
+    printf("#=================================# \n");
+    printf("   Id   Produto            Valor    \n");
 }
