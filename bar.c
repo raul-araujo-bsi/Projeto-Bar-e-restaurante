@@ -104,6 +104,7 @@ void cadastro_produto(void) {
     printf("#============================# \n");
     printf("|    CADASTRO DE PRODUTOS    | \n");
     printf("|                            | \n");
+    printf("|  Id:                       | \n");
     printf("|  Fornecedor:               | \n");
     printf("|  Produto:                  | \n");
     printf("|  Quantidade:               | \n");
