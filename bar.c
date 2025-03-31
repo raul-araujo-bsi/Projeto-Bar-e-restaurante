@@ -3,6 +3,7 @@
 //ASSINATURA DAS FUNÇÕES
 void tela_principal(void);
 void cadastro(void);
+void pedido(void);
 void tela_informacoes(void);
 void informacoes(void);
 void cadastro_produto(void);
@@ -36,6 +37,17 @@ void cadastro(void) {
     printf("|  E-mail:                   | \n");
     printf("|  Login desejado:           | \n");
     printf("|  Senha desejada:           | \n");
+    printf("|                            | \n");
+    printf("#============================# \n");
+}
+void pedido(void) {
+    printf("#============================# \n");
+    printf("|           PEDIDO           | \n");
+    printf("|                            | \n");
+    printf("|  Id do pedido:             | \n");
+    printf("|  Mesa:                     | \n");
+    printf("|  Id do produto:            | \n");    
+    printf("|  Quantidade:               | \n");
     printf("|                            | \n");
     printf("#============================# \n");
 }
