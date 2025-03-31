@@ -45,6 +45,7 @@ void pedido(void) {
     printf("|           PEDIDO           | \n");
     printf("#============================# \n");
     printf("   Id do pedido:               \n");
+    printf("   Id do cliente:              \n");
     printf("   Mesa:                       \n");
     printf("   Id do produto:              \n");    
     printf("   Quantidade:                 \n");
