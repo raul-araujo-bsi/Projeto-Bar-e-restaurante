@@ -5,7 +5,7 @@ void tela_principal(void);
 void cadastro(void);
 void pedido(void);
 void tela_informacoes(void);
-void informacoes(void);
+void gestao(void);
 void cadastro_produto(void);
 void tela_saida(void);
 
@@ -30,6 +30,7 @@ void cadastro(void) {
     printf("#============================# \n");
     printf("|           CADASTRO         | \n");
     printf("|                            | \n");
+    printf("|  Id:                       | \n");
     printf("|  Nome:                     | \n");
     printf("|  Sobrenome:                | \n");
     printf("|  Data de nascimento:       | \n");    
@@ -75,7 +76,7 @@ void tela_saida(void) {
     printf("|                            | \n");
     printf("#============================# \n");
 }
-void informacoes(void) {
+void gestao(void) {
     printf("#============================# \n");
     printf("|                            | \n");
     printf("|  1 - Cadastrar produtos    | \n");
