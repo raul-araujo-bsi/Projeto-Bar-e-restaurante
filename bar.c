@@ -3,7 +3,8 @@
 //ASSINATURA DAS FUNÇÕES
 void tela_principal(void);
 void cadastro(void);
-void pedido(void);
+void tela_pedido(void);
+void realizar_pedido(void);
 void resumo_pedido(void);
 void tela_informacoes(void);
 void gestao(void);
@@ -40,7 +41,7 @@ void cadastro(void) {
     printf("|                            | \n");
     printf("#============================# \n");
 }
-void tela_pedido(void) {
+void menu_pedido(void) {
     printf("#============================# \n");
     printf("|                            | \n");
     printf("| 1 - REALIZAR PEDIDO        | \n");
