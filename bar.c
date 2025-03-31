@@ -3,9 +3,10 @@
 //ASSINATURA DAS FUNÇÕES
 void tela_principal(void);
 void cadastro(void);
-void tela_pedido(void);
+void menu_pedido(void);
 void realizar_pedido(void);
 void resumo_pedido(void);
+void cancelar_pedido(void);
 void tela_informacoes(void);
 void gestao(void);
 void cadastro_produto(void);
@@ -45,7 +46,7 @@ void menu_pedido(void) {
     printf("#============================# \n");
     printf("|                            | \n");
     printf("| 1 - REALIZAR PEDIDO        | \n");
-    printf("| 2 - BUSCAR PEDIDO          | \n");
+    printf("| 2 - RESUMO DO PEDIDO       | \n");
     printf("| 3 - EDITAR PEDIDO          | \n");
     printf("| 4 - CANCELAR PEDIDO        | \n");
     printf("| 0 - SAIR                   | \n");
@@ -65,13 +66,23 @@ void realizar_pedido(void) {
 }
 void resumo_pedido(void) {
     printf("#===============================# \n");
-    printf("|  Id do Pedido:                | \n");
-    printf("|                               | \n");
-    printf("|  Id    Produto     Quantidade | \n");
-    printf("|                               | \n");
-    printf("|  Valor total:                 | \n");
-    printf("|                               | \n");
+    printf("|             PEDIDO            | \n");
     printf("#===============================# \n");
+    printf("  Id do Pedido:                   \n");
+    printf("                                  \n");
+    printf("  Id    Produto     Quantidade    \n");
+    printf("                                  \n");
+    printf("  Valor total:                    \n");
+    printf("                                  \n");
+    printf("#===============================# \n");
+}
+void cancelar_pedido(void) {
+    printf("#==========================================# \n");
+    printf("|             CANCELAR PEDIDO              | \n");
+    printf("#==========================================# \n");
+    printf(" Informe o Id do pedido a ser cancelado:     \n");
+    printf("                                             \n");
+    printf("#==========================================# \n");    
 }
 void tela_informacoes(void) {
     printf("#===========================================================# \n");
