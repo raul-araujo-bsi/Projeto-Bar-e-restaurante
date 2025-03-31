@@ -29,6 +29,7 @@ void tela_principal(void) {
     printf("|                            | \n");
     printf("#============================# \n");
 }
+//MÓDULO DE CADASTRO DE CLIENTES
 void cadastro(void) {
     printf("#============================# \n");
     printf("|           CADASTRO         | \n");
@@ -42,6 +43,7 @@ void cadastro(void) {
     printf("|                            | \n");
     printf("#============================# \n");
 }
+//MÓDULO DE PEDIDOS
 void menu_pedido(void) {
     printf("#============================# \n");
     printf("|                            | \n");
@@ -84,6 +86,7 @@ void cancelar_pedido(void) {
     printf("                                             \n");
     printf("#==========================================# \n");    
 }
+//MÓDULO DE INFORMAÇÕES DO PROGRAMA
 void tela_informacoes(void) {
     printf("#===========================================================# \n");
     printf("|        SISTEMA DE GESTÃO PARA BARES E RESTAURANTES        | \n");
@@ -100,6 +103,7 @@ void tela_informacoes(void) {
     printf("|                                                           | \n");
     printf("#===========================================================# \n");
 }
+//MÓDULO DE SAÍDA DO PROGRAMA
 void tela_saida(void) {
     printf("#============================# \n");
     printf("|                            | \n");
@@ -108,6 +112,7 @@ void tela_saida(void) {
     printf("|                            | \n");
     printf("#============================# \n");
 }
+//MÓDULO PARA GESTORES
 void gestao(void) {
     printf("#============================# \n");
     printf("|                            | \n");
