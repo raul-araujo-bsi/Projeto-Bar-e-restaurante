@@ -2,11 +2,9 @@
 
 //ASSINATURA DAS FUNÇÕES
 void tela_principal(void);
-void cadastro_cliente(void);
+void cadastro(void);
 void login(void);
 void tela_informacoes(void);
-void menu_cliente(void);
-void consulta_cardapio(void);
 void menu_adm(void);
 void cadastro_produto(void);
 void tela_saida(void);
@@ -22,13 +20,13 @@ void tela_principal(void) {
     printf("#============================# \n");
     printf("|                            | \n");
     printf("|        1 - CADASTRO        | \n");
-    printf("|        2 - LOGIN           | \n");
+    printf("|        2 - PEDIDO          | \n");
     printf("|        3 - INFORMAÇÕES     | \n");
     printf("|        0 - SAIR            | \n");
     printf("|                            | \n");
     printf("#============================# \n");
 }
-void cadastro_cliente(void) {
+void cadastro(void) {
     printf("#============================# \n");
     printf("|           CADASTRO         | \n");
     printf("|                            | \n");
@@ -72,34 +70,6 @@ void tela_saida(void) {
     printf("|                            | \n");
     printf("|    OBRIGADO PELA VISITA!   | \n");
     printf("|       ATÉ A PRÓXIMA!       | \n");
-    printf("|                            | \n");
-    printf("#============================# \n");
-}
-void menu_cliente(void) {
-    printf("#============================# \n");
-    printf("|        BEM-VINDO!          | \n");
-    printf("|Escolha uma opção a seguir: | \n");
-    printf("|                            | \n");
-    printf("|  1 - Consultar cardápio    | \n");
-    printf("|  2 - Realizar pedido       | \n");
-    printf("|  3 - Verificar pedido      | \n");
-    printf("|  4 - Cancelar pedido       | \n");
-    printf("|  5 - Ajustar cadastro      | \n");
-    printf("|  0 - sair                  | \n");
-    printf("|                            | \n");
-    printf("#============================# \n");
-}
-void consulta_cardapio (void) {
-    printf("#============================# \n");
-    printf("|          Cardápio          | \n");
-    printf("|                            | \n");
-    printf("|  Id   Produto        Valor | \n");
-    printf("|                            | \n");
-    printf("|                            | \n");
-    printf("|                            | \n");
-    printf("|                            | \n");
-    printf("|                            | \n");
-    printf("|                            | \n");
     printf("|                            | \n");
     printf("#============================# \n");
 }
