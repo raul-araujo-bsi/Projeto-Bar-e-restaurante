@@ -111,12 +111,11 @@ void tela_saida(void) {
 void gestao(void) {
     printf("#============================# \n");
     printf("|                            | \n");
-    printf("|  1 - Pedidos               | \n");
-    printf("|  2 - Cadastrar produtos    | \n");
-    printf("|  3 - Ver produtos          | \n");
-    printf("|  4 - Editar produtos       | \n");
-    printf("|  5 - Excluir produtos      | \n");
-    printf("|  6 - Relatórios            | \n");
+    printf("|  1 - Cadastrar produtos    | \n");
+    printf("|  2 - Ver produtos          | \n");
+    printf("|  3 - Editar produtos       | \n");
+    printf("|  4 - Excluir produtos      | \n");
+    printf("|  5 - Relatórios            | \n");
     printf("|  0 - Sair                  | \n");
     printf("|                            | \n");
     printf("#============================# \n");
