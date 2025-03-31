@@ -6,6 +6,7 @@ void cadastro_cliente(void);
 void login(void);
 void tela_informacoes(void);
 void menu_cliente(void);
+void consulta_cardapio(void);
 void menu_adm(void);
 void cadastro_produto(void);
 void tela_saida(void);
@@ -88,6 +89,21 @@ void menu_cliente(void) {
     printf("|                            | \n");
     printf("#============================# \n");
 }
+void consulta_cardapio (void) {
+    printf("#============================# \n");
+    printf("|          Cardápio          | \n");
+    printf("|                            | \n");
+    printf("|  Id   Produto        Valor | \n");
+    printf("|                            | \n");
+    printf("|                            | \n");
+    printf("|                            | \n");
+    printf("|                            | \n");
+    printf("|                            | \n");
+    printf("|                            | \n");
+    printf("|                            | \n");
+    printf("#============================# \n");
+}
+
 void menu_adm(void) {
     printf("#============================# \n");
     printf("|                            | \n");
