@@ -41,7 +41,7 @@ void cadastro_cliente(void) {
     printf("|                            | \n");
     printf("#============================# \n");
 }
-void login() {
+void login(void) {
     printf("#============================# \n");
     printf("|            LOGIN           | \n");
     printf("|                            | \n");
@@ -50,7 +50,7 @@ void login() {
     printf("|                            | \n");
     printf("#============================# \n");
 }
-void tela_informacoes() {
+void tela_informacoes(void) {
     printf("#===========================================================# \n");
     printf("|        SISTEMA DE GESTÃO PARA BARES E RESTAURANTES        | \n");
     printf("|                                                           | \n");
@@ -66,7 +66,7 @@ void tela_informacoes() {
     printf("|                                                           | \n");
     printf("#===========================================================# \n");
 }
-void tela_saida() {
+void tela_saida(void) {
     printf("#============================# \n");
     printf("|                            | \n");
     printf("|    OBRIGADO PELA VISITA!   | \n");
@@ -74,7 +74,7 @@ void tela_saida() {
     printf("|                            | \n");
     printf("#============================# \n");
 }
-void menu_cliente() {
+void menu_cliente(void) {
     printf("#============================# \n");
     printf("|        BEM-VINDO!          | \n");
     printf("|Escolha uma opção a seguir: | \n");
@@ -88,7 +88,7 @@ void menu_cliente() {
     printf("|                            | \n");
     printf("#============================# \n");
 }
-void menu_adm() {
+void menu_adm(void) {
     printf("#============================# \n");
     printf("|                            | \n");
     printf("|  1 - Cadastrar produtos    | \n");
@@ -101,7 +101,7 @@ void menu_adm() {
     printf("|                            | \n");
     printf("#============================# \n");
 }
-void cadastro_produto() {
+void cadastro_produto(void) {
     printf("#============================# \n");
     printf("|    CADASTRO DE PRODUTOS    | \n");
     printf("|                            | \n");
