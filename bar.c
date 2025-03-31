@@ -4,6 +4,7 @@
 void tela_principal(void);
 void cadastro(void);
 void pedido(void);
+void resumo_pedido(void);
 void tela_informacoes(void);
 void gestao(void);
 void cadastro_produto(void);
@@ -52,6 +53,16 @@ void pedido(void) {
     printf("|                            | \n");
     printf("#============================# \n");
 }
+void resumo_pedido(void) {
+    printf("#===============================# \n");
+    printf("|  Id do Pedido:                | \n");
+    printf("|                               | \n");
+    printf("|  Id    Produto     Quantidade | \n");
+    printf("|                               | \n");
+    printf("|  Valor total:                 | \n");
+    printf("|                               | \n");
+    printf("#===============================# \n");
+}
 void tela_informacoes(void) {
     printf("#===========================================================# \n");
     printf("|        SISTEMA DE GESTÃO PARA BARES E RESTAURANTES        | \n");
@@ -79,11 +90,11 @@ void tela_saida(void) {
 void gestao(void) {
     printf("#============================# \n");
     printf("|                            | \n");
-    printf("|  1 - Cadastrar produtos    | \n");
-    printf("|  2 - Ver produtos          | \n");
-    printf("|  3 - Editar produtos       | \n");
-    printf("|  4 - Excluir produtos      | \n");
-    printf("|  5 - Pedidos               | \n");
+    printf("|  1 - Pedidos               | \n");
+    printf("|  2 - Cadastrar produtos    | \n");
+    printf("|  3 - Ver produtos          | \n");
+    printf("|  4 - Editar produtos       | \n");
+    printf("|  5 - Excluir produtos      | \n");
     printf("|  6 - Relatórios            | \n");
     printf("|  0 - Sair                  | \n");
     printf("|                            | \n");
