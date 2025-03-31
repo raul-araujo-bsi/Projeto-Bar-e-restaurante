@@ -4,7 +4,7 @@
 void tela_principal(void);
 void cadastro(void);
 void tela_informacoes(void);
-void menu_adm(void);
+void informacoes(void);
 void cadastro_produto(void);
 void tela_saida(void);
 
@@ -63,14 +63,14 @@ void tela_saida(void) {
     printf("|                            | \n");
     printf("#============================# \n");
 }
-void menu_adm(void) {
+void informacoes(void) {
     printf("#============================# \n");
     printf("|                            | \n");
     printf("|  1 - Cadastrar produtos    | \n");
     printf("|  2 - Ver produtos          | \n");
     printf("|  3 - Editar produtos       | \n");
     printf("|  4 - Excluir produtos      | \n");
-    printf("|  5 - Vendas                | \n");
+    printf("|  5 - Pedidos               | \n");
     printf("|  6 - Relatórios            | \n");
     printf("|  0 - Sair                  | \n");
     printf("|                            | \n");
