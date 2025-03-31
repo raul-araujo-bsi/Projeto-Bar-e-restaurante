@@ -10,6 +10,7 @@ void cancelar_pedido(void);
 void tela_informacoes(void);
 void gestao(void);
 void cadastro_produto(void);
+void produtos(void);
 void tela_saida(void);
 
 //PROGRAMA PRINCIPAL
