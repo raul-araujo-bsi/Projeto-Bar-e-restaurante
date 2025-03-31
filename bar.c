@@ -37,8 +37,6 @@ void cadastro(void) {
     printf("|  Data de nascimento:       | \n");    
     printf("|  CPF:                      | \n");
     printf("|  E-mail:                   | \n");
-    printf("|  Login desejado:           | \n");
-    printf("|  Senha desejada:           | \n");
     printf("|                            | \n");
     printf("#============================# \n");
 }
