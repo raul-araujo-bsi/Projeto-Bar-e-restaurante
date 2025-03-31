@@ -3,7 +3,6 @@
 //ASSINATURA DAS FUNÇÕES
 void tela_principal(void);
 void cadastro(void);
-void login(void);
 void tela_informacoes(void);
 void menu_adm(void);
 void cadastro_produto(void);
@@ -40,15 +39,6 @@ void cadastro(void) {
     printf("|                            | \n");
     printf("#============================# \n");
 }
-void login(void) {
-    printf("#============================# \n");
-    printf("|            LOGIN           | \n");
-    printf("|                            | \n");
-    printf("|  Login:                    | \n");
-    printf("|  Senha:                    | \n");
-    printf("|                            | \n");
-    printf("#============================# \n");
-}
 void tela_informacoes(void) {
     printf("#===========================================================# \n");
     printf("|        SISTEMA DE GESTÃO PARA BARES E RESTAURANTES        | \n");
@@ -73,7 +63,6 @@ void tela_saida(void) {
     printf("|                            | \n");
     printf("#============================# \n");
 }
-
 void menu_adm(void) {
     printf("#============================# \n");
     printf("|                            | \n");
