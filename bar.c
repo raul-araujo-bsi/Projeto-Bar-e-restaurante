@@ -40,7 +40,18 @@ void cadastro(void) {
     printf("|                            | \n");
     printf("#============================# \n");
 }
-void pedido(void) {
+void tela_pedido(void) {
+    printf("#============================# \n");
+    printf("|                            | \n");
+    printf("| 1 - REALIZAR PEDIDO        | \n");
+    printf("| 2 - BUSCAR PEDIDO          | \n");
+    printf("| 3 - EDITAR PEDIDO          | \n");
+    printf("| 4 - CANCELAR PEDIDO        | \n");
+    printf("| 0 - SAIR                   | \n");
+    printf("|                            | \n");
+    printf("#============================# \n");
+}
+void realizar_pedido(void) {
     printf("#============================# \n");
     printf("|           PEDIDO           | \n");
     printf("#============================# \n");
