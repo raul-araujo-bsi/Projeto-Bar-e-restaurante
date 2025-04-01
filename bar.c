@@ -143,4 +143,5 @@ void produtos(void) {
     printf("|              PRODUTOS           | \n");
     printf("#=================================# \n");
     printf("   Id   Produto            Valor    \n");
+    printf("#=================================# \n");
 }
