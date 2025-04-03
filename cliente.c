@@ -13,7 +13,7 @@ void modulo_cliente(void){
                     break;
             case '3': atualizar_cliente();
                     break;
-            case '4': //modulo_excluir();
+            case '4': modulo_excluir();
                     break;
         }
     } while (opcao != '0');
