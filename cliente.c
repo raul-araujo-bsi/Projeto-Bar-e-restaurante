@@ -44,6 +44,7 @@ void cadastro_cliente(void){
     printf("                               \n");
     printf("  Id.:                         \n");
     printf("  NOME:                        \n");
+    printf("  DATA DE NASCIMENTO:          \n");
     printf("  CPF:                         \n");
     printf("  TELEFONE:                    \n");    
     printf("  E-MAIL:                      \n");
@@ -66,10 +67,18 @@ void atualizar_cliente(void){
     printf("#============================# \n");
     printf("             CADASTRO          \n");
     printf("                               \n");
-    printf("  NOME:                        \n");
-    printf("  CPF:                         \n");
     printf("  TELEFONE:                    \n");    
     printf("  E-MAIL:                      \n");
     printf("                               \n");
     printf("#============================# \n");
+}
+
+
+void excluir_cliente(void){
+    printf("#============================# \n");
+    printf("            EXCLUIR            \n");
+    printf("                               \n");
+    printf("  Informe o CPF do cliente:    \n");
+    printf("                               \n");
+    printf("#============================# \n"); 
 }
