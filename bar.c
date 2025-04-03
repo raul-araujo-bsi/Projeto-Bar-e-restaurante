@@ -4,7 +4,7 @@
 
 //ASSINATURA DAS FUNÇÕES
 char tela_principal(void);
-// void tela_informacoes(void);
+// void tela_sobre(void);
 // void gestao(void);
 // void cadastro_produto(void);
 // void produtos(void);
@@ -26,6 +26,9 @@ int main (void) {
                       break;
             case '3': //modulo_produtos();
                       break;
+            case '4': //modulo_relatorios();
+                      break;
+            case '5': //sobre();
         }
     } while (opcao != '0');
     saida();
@@ -37,9 +40,8 @@ char tela_principal(void) {
     printf("|                            | \n");
     printf("|        1 - CADASTRO        | \n");
     printf("|        2 - PEDIDO          | \n");
-    printf("|        3 - PRODUTOS        | \n");
-    printf("|        4 - RELATÓRIOS      | \n");
-    printf("|        5 - SOBRE           | \n");
+    printf("|        3 - GESTÃO          | \n");
+    printf("|        4 - SOBRE           | \n");
     printf("|        0 - SAIR            | \n");
     printf("|                            | \n");
     printf("#============================# \n");
@@ -48,7 +50,7 @@ char tela_principal(void) {
     return op;
 }
 // //MÓDULO DE INFORMAÇÕES DO PROGRAMA
-// void tela_informacoes(void) {
+// void tela_sobre(void) {
 //     printf("#===========================================================# \n");
 //     printf("|        SISTEMA DE GESTÃO PARA BARES E RESTAURANTES        | \n");
 //     printf("|                                                           | \n");
