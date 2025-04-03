@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "cliente.h"
 #include "pedido.h"
+#include "gestao.h"
 
 //ASSINATURA DAS FUNÇÕES
 char tela_principal(void);
@@ -24,7 +25,7 @@ int main (void) {
                       break;
             case '2': modulo_pedido();
                       break;
-            case '3': //modulo_produtos();
+            case '3': modulo_gestao();
                       break;
             case '4': //modulo_relatorios();
                       break;
@@ -76,7 +77,7 @@ void saida(void) {
     printf("#============================# \n");
 }
 // //MÓDULO PARA GESTORES
-// void gestao(void) {
+// void modulo_gestao(void) {
 //     printf("#============================# \n");
 //     printf("|                            | \n");
 //     printf("|  1 - Cadastrar produtos    | \n");
