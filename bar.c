@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "cliente.h"
+#include "pedido.h"
 
 //ASSINATURA DAS FUNÇÕES
 char tela_principal(void);
@@ -26,7 +27,7 @@ int main (void) {
         switch(opcao){
             case '1': modulo_cliente();
                       break;
-            case '2': //modulo_pedidos();
+            case '2': modulo_pedido();
                       break;
             case '3': //modulo_produtos();
                       break;
