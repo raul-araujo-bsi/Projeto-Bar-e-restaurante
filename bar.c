@@ -4,16 +4,11 @@
 
 //ASSINATURA DAS FUNÇÕES
 char tela_principal(void);
-// void cadastro(void);
-// void menu_pedido(void);
-// void realizar_pedido(void);
-// void resumo_pedido(void);
-// void cancelar_pedido(void);
 // void tela_informacoes(void);
 // void gestao(void);
 // void cadastro_produto(void);
 // void produtos(void);
-// void tela_saida(void);
+void saida(void);
 
 //PROGRAMA PRINCIPAL
 int main (void) {
@@ -33,6 +28,7 @@ int main (void) {
                       break;
         }
     } while (opcao != '0');
+    saida();
     return 0;
 }
 char tela_principal(void) {
@@ -41,7 +37,9 @@ char tela_principal(void) {
     printf("|                            | \n");
     printf("|        1 - CADASTRO        | \n");
     printf("|        2 - PEDIDO          | \n");
-    printf("|        3 - INFORMAÇÕES     | \n");
+    printf("|        3 - PRODUTOS        | \n");
+    printf("|        4 - RELATÓRIOS      | \n");
+    printf("|        5 - SOBRE           | \n");
     printf("|        0 - SAIR            | \n");
     printf("|                            | \n");
     printf("#============================# \n");
@@ -67,14 +65,14 @@ char tela_principal(void) {
 //     printf("#===========================================================# \n");
 // }
 // //MÓDULO DE SAÍDA DO PROGRAMA
-// void tela_saida(void) {
-//     printf("#============================# \n");
-//     printf("|                            | \n");
-//     printf("|    OBRIGADO PELA VISITA!   | \n");
-//     printf("|       ATÉ A PRÓXIMA!       | \n");
-//     printf("|                            | \n");
-//     printf("#============================# \n");
-// }
+void saida(void) {
+    printf("#============================# \n");
+    printf("|                            | \n");
+    printf("|    OBRIGADO PELA VISITA!   | \n");
+    printf("|       ATÉ A PRÓXIMA!       | \n");
+    printf("|                            | \n");
+    printf("#============================# \n");
+}
 // //MÓDULO PARA GESTORES
 // void gestao(void) {
 //     printf("#============================# \n");
