@@ -11,7 +11,9 @@ void modulo_cliente(void){
                     break;
             case '2': pesquisar_cliente();
                     break;
-            case '3': //modulo_produtos();
+            case '3': atualizar_cliente();
+                    break;
+            case '4': //modulo_excluir();
                     break;
         }
     } while (opcao != '0');
@@ -52,9 +54,22 @@ void cadastro_cliente(void){
 
 void pesquisar_cliente (void){
     printf("#============================# \n");
-    printf("|           PESQUISA          \n");
-    printf("|                             \n");
-    printf("| Informe o CPF do cliente:  \n");
-    printf("|                             \n");
+    printf("|           PESQUISA           \n");
+    printf("|                              \n");
+    printf("| Informe o CPF do cliente:    \n");
+    printf("|                              \n");
     printf("#============================# \n"); 
+}
+
+
+void atualizar_cliente(void){
+    printf("#============================# \n");
+    printf("             CADASTRO          \n");
+    printf("                               \n");
+    printf("  NOME:                        \n");
+    printf("  CPF:                         \n");
+    printf("  TELEFONE:                    \n");    
+    printf("  E-MAIL:                      \n");
+    printf("                               \n");
+    printf("#============================# \n");
 }

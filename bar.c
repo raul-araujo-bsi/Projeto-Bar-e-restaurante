@@ -16,7 +16,6 @@ char tela_principal(void);
 
 //PROGRAMA PRINCIPAL
 int main (void) {
-//     tela_principal();
 //     tela_informacoes();
 //     return 0;
 // }
