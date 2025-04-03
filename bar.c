@@ -48,63 +48,6 @@ char tela_principal(void) {
     getchar();
     return op;
 }
-// //MÓDULO DE CADASTRO DE CLIENTES
-// void cadastro(void) {
-//     printf("#============================# \n");
-//     printf("|           CADASTRO         | \n");
-//     printf("|                            | \n");
-//     printf("|  Id:                       | \n");
-//     printf("|  Nome:                     | \n");
-//     printf("|  Sobrenome:                | \n");
-//     printf("|  Data de nascimento:       | \n");    
-//     printf("|  CPF:                      | \n");
-//     printf("|  E-mail:                   | \n");
-//     printf("|                            | \n");
-//     printf("#============================# \n");
-// }
-// //MÓDULO DE PEDIDOS
-// void menu_pedido(void) {
-//     printf("#============================# \n");
-//     printf("|                            | \n");
-//     printf("| 1 - REALIZAR PEDIDO        | \n");
-//     printf("| 2 - RESUMO DO PEDIDO       | \n");
-//     printf("| 3 - EDITAR PEDIDO          | \n");
-//     printf("| 4 - CANCELAR PEDIDO        | \n");
-//     printf("| 0 - SAIR                   | \n");
-//     printf("|                            | \n");
-//     printf("#============================# \n");
-// }
-// void realizar_pedido(void) {
-//     printf("#============================# \n");
-//     printf("|           PEDIDO           | \n");
-//     printf("#============================# \n");
-//     printf("   Id do pedido:               \n");
-//     printf("   Id do cliente:              \n");
-//     printf("   Mesa:                       \n");
-//     printf("   Id do produto:              \n");    
-//     printf("   Quantidade:                 \n");
-//     printf("#============================# \n");
-// }
-// void resumo_pedido(void) {
-//     printf("#===============================# \n");
-//     printf("|             PEDIDO            | \n");
-//     printf("#===============================# \n");
-//     printf("  Id do Pedido:                   \n");
-//     printf("                                  \n");
-//     printf("  Id    Produto     Quantidade    \n");
-//     printf("                                  \n");
-//     printf("  Valor total:                    \n");
-//     printf("                                  \n");
-//     printf("#===============================# \n");
-// }
-// void cancelar_pedido(void) {
-//     printf("#==========================================# \n");
-//     printf("|             CANCELAR PEDIDO              | \n");
-//     printf("#==========================================# \n");
-//     printf(" Informe o Id do pedido a ser cancelado:     \n");
-//     printf("                                             \n");
-//     printf("#==========================================# \n");    
-// }
 // //MÓDULO DE INFORMAÇÕES DO PROGRAMA
 // void tela_informacoes(void) {
 //     printf("#===========================================================# \n");
