@@ -36,7 +36,8 @@ char tela_principal(void) {
     printf("|        1 - CADASTRO        | \n");
     printf("|        2 - PEDIDO          | \n");
     printf("|        3 - GESTÃO          | \n");
-    printf("|        4 - SOBRE           | \n");
+    printf("|        4 - RELATÓRIOS      | \n");
+    printf("|        5 - SOBRE           | \n");
     printf("|        0 - SAIR            | \n");
     printf("|                            | \n");
     printf("#============================# \n");
