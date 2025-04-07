@@ -33,7 +33,7 @@ char tela_principal(void) {
     char op;
     printf("#============================# \n");
     printf("|                            | \n");
-    printf("|        1 - CADASTRO        | \n");
+    printf("|        1 - CLIENTE         | \n");
     printf("|        2 - PEDIDO          | \n");
     printf("|        3 - GESTÃO          | \n");
     printf("|        4 - RELATÓRIOS      | \n");
