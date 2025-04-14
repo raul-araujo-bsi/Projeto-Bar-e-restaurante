@@ -41,6 +41,7 @@ char tela_cliente(void){
 
 void cadastro_cliente(void){
     char nome[50];
+    char cpf[13];
     printf("#============================# \n");
     printf("             CADASTRO          \n");
     printf("                               \n");
@@ -48,6 +49,7 @@ void cadastro_cliente(void){
     printf("  NOME:                        \n");
     ler_nome(nome);
     printf("  CPF:                         \n");
+    ler_cpf(cpf);
     printf("  TELEFONE:                    \n");    
     printf("  E-MAIL:                      \n");
     printf("                               \n");
@@ -91,4 +93,12 @@ void ler_nome(char nome[50]) {
     fgets(nome,48,stdin);
     tam = strlen(nome);
     nome[tam-1] = '\0';
+}
+
+
+void ler_cpf(char cpf[13]) {
+    int tam;
+    fgets(cpf,11,stdin);
+    tam = strlen(cpf);
+    cpf[tam-1] = '\0';
 }
