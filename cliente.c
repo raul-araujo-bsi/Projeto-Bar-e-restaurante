@@ -72,11 +72,15 @@ void pesquisar_cliente (void){
 
 
 void atualizar_cliente(void){
+    char fone[13];
+    char email[30];
     printf("#============================# \n");
     printf("             CADASTRO          \n");
     printf("                               \n");
-    printf("  TELEFONE:                    \n");    
+    printf("  TELEFONE:                    \n");   
+    ler_fone(fone); 
     printf("  E-MAIL:                      \n");
+    ler_email(email);
     printf("                               \n");
     printf("#============================# \n");
 }
