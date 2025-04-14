@@ -8,3 +8,4 @@ void excluir_cliente(void);
 void ler_nome(char nome[50]);
 void ler_cpf(char cpf[13]);
 void ler_fone(char fone[13]);
+void ler_email(char email[30]);
