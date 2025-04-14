@@ -1,3 +1,4 @@
+#include <string.h>
 #include <stdio.h>
 #include "cliente.h"
 
@@ -39,12 +40,13 @@ char tela_cliente(void){
 
 
 void cadastro_cliente(void){
+    char nome[50];
     printf("#============================# \n");
     printf("             CADASTRO          \n");
     printf("                               \n");
     printf("  Id.:                         \n");
     printf("  NOME:                        \n");
-    printf("  DATA DE NASCIMENTO:          \n");
+    ler_nome(nome);
     printf("  CPF:                         \n");
     printf("  TELEFONE:                    \n");    
     printf("  E-MAIL:                      \n");
@@ -81,4 +83,12 @@ void excluir_cliente(void){
     printf("  Informe o CPF do cliente:    \n");
     printf("                               \n");
     printf("#============================# \n"); 
+}
+
+
+void ler_nome(char nome[50]) {
+    int tam;
+    fgets(nome,48,stdin);
+    tam = strlen(nome);
+    nome[tam-1] = '\0';
 }
