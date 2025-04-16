@@ -62,10 +62,12 @@ void cadastro_cliente(void){
 
 
 void pesquisar_cliente (void){
+    char cpf[13];
     printf("#============================# \n");
     printf("|           PESQUISA           \n");
     printf("|                              \n");
     printf("| Informe o CPF do cliente:    \n");
+    ler_cpf(cpf);
     printf("|                              \n");
     printf("#============================# \n"); 
 }
@@ -87,10 +89,12 @@ void atualizar_cliente(void){
 
 
 void excluir_cliente(void){
+    char cpf[13];
     printf("#============================# \n");
     printf("            EXCLUIR            \n");
     printf("                               \n");
     printf("  Informe o CPF do cliente:    \n");
+    ler_cpf(cpf);
     printf("                               \n");
     printf("#============================# \n"); 
 }
