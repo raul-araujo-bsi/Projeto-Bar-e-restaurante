@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <ctype.h>
 #include <string.h>
+#include "valida.h"
 
 int valida_nome (char *nome){
     int i = 0;
