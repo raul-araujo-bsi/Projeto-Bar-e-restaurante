@@ -2,6 +2,7 @@
 #include "cliente.h"
 #include "pedido.h"
 #include "gestao.h"
+#include "valida.h"
 
 //ASSINATURA DAS FUNÇÕES
 char tela_principal(void);
