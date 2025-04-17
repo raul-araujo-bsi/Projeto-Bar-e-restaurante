@@ -1,3 +1,7 @@
+#include <stdio.h>
+#include <ctype.h>
+#include <string.h>
+
 int valida_nome (char *nome){
     int i = 0;
     do {
@@ -6,6 +10,8 @@ int valida_nome (char *nome){
         }
         i++;
     } while (nome[i] != '\0');
+    return 1;
+}
 
 
 // void valida_cpf (void){
