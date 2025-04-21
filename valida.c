@@ -16,9 +16,19 @@ int valida_nome (char *nome){
 }
 
 
-// int valida_cpf (void){
-
-// }
+int valida_cpf (char *cpf){
+    if (strlen(cpf) != 11) {
+    return 0;
+    }
+    else {
+        for (int i = 0; i < 11; i++) {
+            if (!isdigit(cpf[i])) {
+            return 0;
+            }
+        }
+    }
+    return 1;
+}
 
 
 // int valida_fone (void) {
