@@ -1,3 +1,4 @@
+#include "valida.h"
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
@@ -33,9 +34,22 @@ int valida_cpf (char *cpf){
 }
 
 
-// int valida_fone (void) {
+int valida_fone (char *fone) {
+    int i;
+    if (strlen(fone) != 11) {
+        return 0;
+    }
 
-// }
+    i = 0;
+    do {
+        if (!isdigit(fone[i])) {
+            return 0;
+        }
+        i++;
+    } while (fone[i] != '\0');
+
+    return 1;
+}
 
 
 // int valida_email (void){
