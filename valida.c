@@ -51,26 +51,33 @@ int valida_fone (char *fone) {
 
 
 int valida_email (char *email){
-    int i = 0;
-    int arroba = 0;
-    int ponto = 0;
+    int i;
+    int arroba;
+    int ponto;
+    int tam;
     if (email[0] == '@' || email[0] == '.') {
         return 0;
     }
+    i = 0;
+    arroba = 0;
+    ponto = 0;
     do {
-        if (email[i] == " ") {
-            return 0;
-        } else if (email[i] == "." && arroba < 0) {
+        if (email[i] == ' ') {
             return 0;
         }
-        else if (email[i] == "@") {
+        else if (email[i] == '@') {
             arroba++;
-        } else if (email[i] == "." && arroba > 0) {
+        } else if (email[i] == '.' && arroba > 0) {
             ponto++;
         }
         i++;
     } while (email[i] != '\0');
+    tam = strlen(email)-1;
+    if (email[tam] == '@' || email[tam] == '.') {
+        return 0;
+    }
     if (arroba == 1 && ponto >= 1) {
         return 1;
     }
     return 0;
+}
