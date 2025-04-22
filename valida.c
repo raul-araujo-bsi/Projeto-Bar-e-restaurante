@@ -18,11 +18,12 @@ int valida_nome (char *nome){
 
 
 int valida_cpf (char *cpf){
+    int i;
     if (strlen(cpf) != 11) {
     return 0;
     }
     else {
-        for (int i = 0; i < 11; i++) {
+        for (i = 0; i < 11; i++) {
             if (!isdigit(cpf[i])) {
             return 0;
             }
