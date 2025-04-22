@@ -51,10 +51,7 @@ int valida_fone (char *fone) {
 
 
 int valida_email (char *email){
-    int i;
-    int arroba;
-    int ponto;
-    int tam;
+    int i,arroba,ponto,tam;
     if (email[0] == '@' || email[0] == '.') {
         return 0;
     }
