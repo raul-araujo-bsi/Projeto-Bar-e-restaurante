@@ -105,7 +105,6 @@ void ler_nome(char nome[50]) {
     fgets(nome,48,stdin);
     tam = strlen(nome);
     nome[tam-1] = '\0';
-    getchar();
 }
 
 
@@ -114,7 +113,6 @@ void ler_cpf(char cpf[13]) {
     fgets(cpf,11,stdin);
     tam = strlen(cpf);
     cpf[tam-1] = '\0';
-    getchar();
 }
 
 
@@ -123,7 +121,6 @@ void ler_fone(char fone[13]) {
     fgets(fone,11,stdin);
     tam = strlen(fone);
     fone[tam-1] = '\0';
-    getchar();
 }
 
 
@@ -132,5 +129,4 @@ void ler_email(char email[30]) {
     fgets(email,28,stdin);
     tam = strlen(email);
     email[tam-1] = '\0';
-    getchar();
 }
