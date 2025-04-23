@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "pedido.h"
 
 void modulo_pedido(void){

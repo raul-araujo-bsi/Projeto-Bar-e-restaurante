@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "gestao.h"
 
 void modulo_gestao(void){
