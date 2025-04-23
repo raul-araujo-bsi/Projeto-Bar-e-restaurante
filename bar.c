@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "cliente.h"
 #include "pedido.h"
 #include "gestao.h"
