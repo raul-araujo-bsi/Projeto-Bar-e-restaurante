@@ -53,6 +53,7 @@ void cadastrar_produto(void) {
     printf("|  Valor:                    | \n");
     printf("|                            | \n");
     printf("#============================# \n");
+    getchar();
 }
 
 
@@ -63,6 +64,7 @@ void pesquisar_produto(void) {
     printf("#=================================# \n");
     printf("   Id   Produto            Valor    \n");
     printf("#=================================# \n");
+    getchar();
 }
 
 
@@ -74,6 +76,7 @@ void atualizar_produto(void) {
     printf(" Informe o Id do produto a ser atualizado:   \n");
     printf("                                             \n");
     printf("#==========================================# \n"); 
+    getchar();
 }
 
 
@@ -85,4 +88,5 @@ void excluir_produto(void) {
     printf(" Informe o Id do produto a ser cancelado:    \n");
     printf("                                             \n");
     printf("#==========================================# \n");
+    getchar();
 }

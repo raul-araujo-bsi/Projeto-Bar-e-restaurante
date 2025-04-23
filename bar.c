@@ -68,6 +68,7 @@ void sobre(void) {
     printf("| E-mail: raul.araujo.101@ufrn.edu.br                       | \n");
     printf("|                                                           | \n");
     printf("#===========================================================# \n");
+    getchar();
 }
 
 

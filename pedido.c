@@ -52,6 +52,7 @@ void realizar_pedido(void) {
     printf("   Id do produto:              \n");    
     printf("   Quantidade:                 \n");
     printf("#============================# \n");
+    getchar();
 }
 
 
@@ -67,6 +68,7 @@ void pesquisar_pedido(void) {
     printf("  Valor total:                    \n");
     printf("                                  \n");
     printf("#===============================# \n");
+    getchar();
 }
 
 
@@ -80,6 +82,7 @@ void atualizar_pedido(void){
     printf("   Id do produto:              \n");    
     printf("   Quantidade:                 \n");
     printf("#============================# \n"); 
+    getchar();
 }
 
 
@@ -91,4 +94,5 @@ void cancelar_pedido(void) {
     printf(" Informe o Id do pedido a ser cancelado:     \n");
     printf("                                             \n");
     printf("#==========================================# \n");    
+    getchar();
 }
