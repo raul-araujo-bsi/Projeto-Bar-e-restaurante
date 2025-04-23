@@ -52,7 +52,7 @@ int valida_fone (char *fone) {
 
 int valida_email (char *email){
     int i,arroba,ponto,tam;
-    if (email[0] == '@' || email[0] == '.') {
+    if (email[0] == '@' || email[0] == '.' || email[0]=='\0') {
         return 0;
     }
     i = 0;
