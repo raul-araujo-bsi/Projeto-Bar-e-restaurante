@@ -22,6 +22,7 @@ void modulo_cliente(void){
 
 
 char tela_cliente(void){
+    system("cls||clear");
     char op;
     printf("#============================# \n");
     printf("|           CLIENTES         | \n");
@@ -40,6 +41,7 @@ char tela_cliente(void){
 
 
 void cadastro_cliente(void){
+    system("cls||clear");
     char nome[50];
     char cpf[13];
     char fone[13];
@@ -62,6 +64,7 @@ void cadastro_cliente(void){
 
 
 void pesquisar_cliente (void){
+    system("cls||clear");
     char cpf[13];
     printf("#============================# \n");
     printf("|           PESQUISA           \n");
@@ -74,6 +77,7 @@ void pesquisar_cliente (void){
 
 
 void atualizar_cliente(void){
+    system("cls||clear");
     char fone[13];
     char email[30];
     printf("#============================# \n");
@@ -89,6 +93,7 @@ void atualizar_cliente(void){
 
 
 void excluir_cliente(void){
+    system("cls||clear");
     char cpf[13];
     printf("#============================# \n");
     printf("            EXCLUIR            \n");

@@ -2,6 +2,7 @@
 #include "pedido.h"
 
 void modulo_pedido(void){
+    system("cls||clear");
     char opcao;
 
     do {
@@ -21,6 +22,7 @@ void modulo_pedido(void){
 
 
 char tela_pedido(void){
+    system("cls||clear");
     char op;
     printf("#============================# \n");
     printf("|          PEDIDOS           | \n");
@@ -39,6 +41,7 @@ char tela_pedido(void){
 
 
 void realizar_pedido(void) {
+    system("cls||clear");
     printf("#============================# \n");
     printf("|           PEDIDO           | \n");
     printf("#============================# \n");
@@ -52,6 +55,7 @@ void realizar_pedido(void) {
 
 
 void pesquisar_pedido(void) {
+    system("cls||clear");
     printf("#===============================# \n");
     printf("|             PEDIDO            | \n");
     printf("#===============================# \n");
@@ -66,6 +70,7 @@ void pesquisar_pedido(void) {
 
 
 void atualizar_pedido(void){
+    system("cls||clear");
     printf("#============================# \n");
     printf("|           PEDIDO           | \n");
     printf("#============================# \n");
@@ -78,6 +83,7 @@ void atualizar_pedido(void){
 
 
 void cancelar_pedido(void) {
+    system("cls||clear");
     printf("#==========================================# \n");
     printf("|             CANCELAR PEDIDO              | \n");
     printf("#==========================================# \n");

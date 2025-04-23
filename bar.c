@@ -11,6 +11,7 @@ void saida(void);
 
 //PROGRAMA PRINCIPAL
 int main (void) {
+    system("cls||clear");
     char opcao;
     
     do {
@@ -31,6 +32,7 @@ int main (void) {
     return 0;
 }
 char tela_principal(void) {
+    system("cls||clear");
     char op;
     printf("#============================# \n");
     printf("|                            | \n");
@@ -49,6 +51,7 @@ char tela_principal(void) {
 
 
 void sobre(void) {
+    system("cls||clear");
     printf("#===========================================================# \n");
     printf("|        SISTEMA DE GESTÃO PARA BARES E RESTAURANTES        | \n");
     printf("|                                                           | \n");
@@ -67,6 +70,7 @@ void sobre(void) {
 
 
 void saida(void) {
+    system("cls||clear");
     printf("#============================# \n");
     printf("|                            | \n");
     printf("|    OBRIGADO PELA VISITA!   | \n");

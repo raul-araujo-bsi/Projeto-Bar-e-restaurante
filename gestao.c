@@ -2,6 +2,7 @@
 #include "gestao.h"
 
 void modulo_gestao(void){
+    system("cls||clear");
     char opcao;
 
     do {
@@ -21,6 +22,7 @@ void modulo_gestao(void){
 
 
 char tela_gestao(void) {
+    system("cls||clear");
     char op;
     printf("#============================# \n");
     printf("|                            | \n");
@@ -39,6 +41,7 @@ char tela_gestao(void) {
 
 
 void cadastrar_produto(void) {
+    system("cls||clear");
     printf("#============================# \n");
     printf("|    CADASTRO DE PRODUTOS    | \n");
     printf("|                            | \n");
@@ -53,6 +56,7 @@ void cadastrar_produto(void) {
 
 
 void pesquisar_produto(void) {
+    system("cls||clear");
     printf("#=================================# \n");
     printf("|              PRODUTOS           | \n");
     printf("#=================================# \n");
@@ -62,6 +66,7 @@ void pesquisar_produto(void) {
 
 
 void atualizar_produto(void) {
+    system("cls||clear");
     printf("#==========================================# \n");
     printf("|           ATUALIZAR PRODUTO              | \n");
     printf("#==========================================# \n");
@@ -72,6 +77,7 @@ void atualizar_produto(void) {
 
 
 void excluir_produto(void) {
+    system("cls||clear");
     printf("#==========================================# \n");
     printf("|            CANCELAR PRODUTO              | \n");
     printf("#==========================================# \n");
