@@ -27,6 +27,7 @@ int main (void) {
             case '4': //modulo_relatorios();
                       break;
             case '5': sobre();
+                      break;
         }
     } while (opcao != '0');
     saida();
