@@ -127,6 +127,9 @@ void ler_cpf(char cpf[13]) {
         fgets(cpf,11,stdin);
         tam = strlen(cpf);
         cpf[tam-1] = '\0';
+        if (!valida_cpf(cpf)) {
+            printf("CPF inválido!\n");
+        }
     } while(!valida_cpf(cpf));
 }
 
