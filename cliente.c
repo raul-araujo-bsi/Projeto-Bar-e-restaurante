@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "cliente.h"
+#include "valida.h"
 
 void modulo_cliente(void){
     char opcao;
@@ -51,7 +52,6 @@ void cadastro_cliente(void){
     printf("             CADASTRO          \n");
     printf("                               \n");
     printf("  Id.:                         \n");
-    printf("  NOME:                        \n");
     ler_nome(nome);
     printf("  CPF:                         \n");
     ler_cpf(cpf);
@@ -107,10 +107,16 @@ void excluir_cliente(void){
 
 
 void ler_nome(char nome[50]) {
-    int tam;
-    fgets(nome,48,stdin);
-    tam = strlen(nome);
-    nome[tam-1] = '\0';
+    do {
+        int tam;
+        printf ("Digite o nome do cliente: ");
+        fgets(nome,48,stdin);
+        tam = strlen(nome);
+        nome[tam-1] = '\0';
+        if(!valida_nome(nome)) {
+            printf("Nome inválido!\n");
+        }
+    } while(!valida_nome(nome));
 }
 
 
