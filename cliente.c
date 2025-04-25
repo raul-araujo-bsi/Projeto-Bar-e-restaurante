@@ -114,17 +114,20 @@ void ler_nome(char nome[50]) {
         tam = strlen(nome);
         nome[tam-1] = '\0';
         if(!valida_nome(nome)) {
-            printf("Nome inválido!\n");
+            printf("Nome inválido!");
         }
     } while(!valida_nome(nome));
 }
 
 
 void ler_cpf(char cpf[13]) {
-    int tam;
-    fgets(cpf,11,stdin);
-    tam = strlen(cpf);
-    cpf[tam-1] = '\0';
+    do {
+        int tam;
+        printf("Digite o CPF do cliente: ");
+        fgets(cpf,11,stdin);
+        tam = strlen(cpf);
+        cpf[tam-1] = '\0';
+    } while(!valida_cpf(cpf));
 }
 
 
