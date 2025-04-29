@@ -124,7 +124,7 @@ void ler_cpf(char cpf[13]) {
     do {
         int tam;
         printf("Digite o CPF do cliente: ");
-        fgets(cpf,11,stdin);
+        fgets(cpf,13,stdin);
         tam = strlen(cpf);
         cpf[tam-1] = '\0';
         if (!valida_cpf(cpf)) {
@@ -136,7 +136,7 @@ void ler_cpf(char cpf[13]) {
 
 void ler_fone(char fone[13]) {
     int tam;
-    fgets(fone,11,stdin);
+    fgets(fone,13,stdin);
     tam = strlen(fone);
     fone[tam-1] = '\0';
 }
