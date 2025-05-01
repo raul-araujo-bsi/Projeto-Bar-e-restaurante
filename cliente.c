@@ -128,17 +128,23 @@ void ler_cpf(char cpf[13]) {
     tam = strlen(cpf);
     cpf[tam-1] = '\0';
     if (!valida_cpf(cpf)) {
-        printf("CPF inválido!\n");
+      printf("CPF inválido!\n");
     }
   } while(!valida_cpf(cpf));
 }
 
 
 void ler_fone(char fone[13]) {
-  int tam;
-  fgets(fone,13,stdin);
-  tam = strlen(fone);
-  fone[tam-1] = '\0';
+  do{
+    int tam;
+    printf("Informe o telefone do cliente: ");
+    fgets(fone,13,stdin);
+    tam = strlen(fone);
+    fone[tam-1] = '\0';
+    if (!valida_fone(fone)){
+      printf("Telefone inválido!");
+    }
+  } while (!valida_fone(fone));
 }
 
 
