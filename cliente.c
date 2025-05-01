@@ -51,7 +51,6 @@ void cadastro_cliente(void){
   printf("#============================# \n");
   printf("             CADASTRO          \n");
   printf("                               \n");
-  printf("  Id.:                         \n");
   ler_nome(nome);
   printf("  CPF:                         \n");
   ler_cpf(cpf);
@@ -141,7 +140,7 @@ void ler_fone(char fone[13]) {
     fgets(fone,13,stdin);
     tam = strlen(fone);
     fone[tam-1] = '\0';
-    if (!valida_fone(fone)){
+    if (!valida_fone(fone)) {
       printf("Telefone inválido!");
     }
   } while (!valida_fone(fone));
@@ -152,10 +151,10 @@ void ler_email(char email[30]) {
   do{
     int tam;
     printf("Informe o Email do cliente: ");
-    fgets(email,28,stdin);
+    fgets(email,30,stdin);
     tam = strlen(email);
     email[tam-1] = '\0';
-    if (!valida_email(email)){
+    if (!valida_email(email)) {
       printf("Formato de email inválido!");
     }
   } while(!valida_email(email));
