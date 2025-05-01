@@ -149,8 +149,14 @@ void ler_fone(char fone[13]) {
 
 
 void ler_email(char email[30]) {
-  int tam;
-  fgets(email,28,stdin);
-  tam = strlen(email);
-  email[tam-1] = '\0';
+  do{
+    int tam;
+    printf("Informe o Email do cliente: ");
+    fgets(email,28,stdin);
+    tam = strlen(email);
+    email[tam-1] = '\0';
+    if (!valida_email(email)){
+      printf("Formato de email inválido!");
+    }
+  } while(!valida_email(email));
 }
