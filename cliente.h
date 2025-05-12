@@ -1,12 +1,3 @@
-typedef struct cliente Cliente;
-
-struct cliente {
-	char nome[50];
-  char cpf[13];
-  char fone[13];
-  char email[30];
-	int status;
-};
 
 void modulo_cliente(void);
 char tela_cliente(void);

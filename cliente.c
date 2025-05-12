@@ -4,6 +4,8 @@
 #include "cliente.h"
 #include "valida.h"
 
+typedef struct cliente Cliente;
+
 void modulo_cliente(void){
   char opcao;
 
