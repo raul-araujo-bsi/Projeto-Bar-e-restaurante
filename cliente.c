@@ -44,30 +44,24 @@ char tela_cliente(void){
 }
 
 
-// void cadCliente (void) {
-//   Cliente *cli;
-  
-//   cli = cadastro_cliente();
-//   gravarCliente(cli);
-//   free(cli);
-// }
+void cadastro_cliente(void){
+  Cliente *cli;
+  cli = (Cliente*) malloc(sizeof(Cliente));
 
+  limpaTela();
+  printf("#============================# \n");
+  printf("           CADASTRO            \n");
+  printf("                               \n");
+  ler_nome(cli);
+  ler_cpf(cli);    
+  ler_fone(cli);
+  ler_email(cli);
+  printf("                               \n");
+  printf("#============================# \n");   
 
-// Cliente* cadastro_cliente(void){
-//   Cliente *cli;
-//   cli = (Cliente*) malloc(sizeof(Cliente));
-
-//   limpaTela();
-//   printf("#============================# \n");
-//   printf("             CADASTRO          \n");
-//   printf("                               \n");
-//   ler_nome();
-//   ler_cpf();    
-//   ler_fone();
-//   ler_email();
-//   printf("                               \n");
-//   printf("#============================# \n");   
-// }
+  grava_cliente(cli);
+  free(cli);
+}
 
 
 void pesquisar_cliente (void){
@@ -112,55 +106,55 @@ void excluir_cliente(void){
 }
 
 
-// void ler_nome(char [13]) {
-//   do {
-//     int tam;
-//     printf ("Digite o nome do cliente: ");
-//     fgets(cli->nome);
-//     if(!valida_nome(cli->nome)) {
-//         printf("Nome inválido!");
-//     }
-//   } while(!valida_nome(cli->nome));
-// }
+void ler_nome(char*nome) {
+  do {
+    int tam;
+    printf ("Digite o nome do cliente: ");
+    fgets(nome,50,stdin);
+    if(!valida_nome(nome)) {
+        printf("Nome inválido!");
+    }
+  } while(!valida_nome(nome));
+}
 
 
-// void ler_cpf(char cpf[13]) {
-//   do {
-//     int tam;
-//     printf("Digite o CPF do cliente: ");
-//     fgets(cpf,13,stdin);
-//     tam = strlen(cpf);
-//     cpf[tam-1] = '\0';
-//     if (!valida_cpf(cpf)) {
-//       printf("CPF inválido!\n");
-//     }
-//   } while(!valida_cpf(cpf));
-// }
+void ler_cpf(char cpf[13]) {
+  do {
+    int tam;
+    printf("Digite o CPF do cliente: ");
+    fgets(cpf,13,stdin);
+    tam = strlen(cpf);
+    cpf[tam-1] = '\0';
+    if (!valida_cpf(cpf)) {
+      printf("CPF inválido!\n");
+    }
+  } while(!valida_cpf(cpf));
+}
 
 
-// void ler_fone(char fone[13]) {
-//   do{
-//     int tam;
-//     printf("Informe o telefone do cliente: ");
-//     fgets(fone,13,stdin);
-//     tam = strlen(fone);
-//     fone[tam-1] = '\0';
-//     if (!valida_fone(fone)) {
-//       printf("Telefone inválido!");
-//     }
-//   } while (!valida_fone(fone));
-// }
+void ler_fone(char fone[13]) {
+  do{
+    int tam;
+    printf("Informe o telefone do cliente: ");
+    fgets(fone,13,stdin);
+    tam = strlen(fone);
+    fone[tam-1] = '\0';
+    if (!valida_fone(fone)) {
+      printf("Telefone inválido!");
+    }
+  } while (!valida_fone(fone));
+}
 
 
-// void ler_email(char email[30]) {
-//   do{
-//     int tam;
-//     printf("Informe o Email do cliente: ");
-//     fgets(email,30,stdin);
-//     tam = strlen(email);
-//     email[tam-1] = '\0';
-//     if (!valida_email(email)) {
-//       printf("Formato de email inválido!");
-//     }
-//   } while(!valida_email(email));
-// }
+void ler_email(char email[30]) {
+  do{
+    int tam;
+    printf("Informe o Email do cliente: ");
+    fgets(email,30,stdin);
+    tam = strlen(email);
+    email[tam-1] = '\0';
+    if (!valida_email(email)) {
+      printf("Formato de email inválido!");
+    }
+  } while(!valida_email(email));
+}
