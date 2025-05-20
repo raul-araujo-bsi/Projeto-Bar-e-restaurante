@@ -1,4 +1,4 @@
-int valida_nome (char *nome);
-int valida_cpf (char *cpf);
-// void valida_fone (void);
-// void valida_email (void);
+int valida_nome (char*);
+int valida_cpf (char*);
+int valida_fone (char*);
+int valida_email (char*);
