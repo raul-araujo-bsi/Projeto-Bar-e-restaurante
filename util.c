@@ -1,4 +1,5 @@
 #include <time.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <util.h>
@@ -21,3 +22,14 @@ void limpaTela(void) {
     // limpa a tela, Linux, Mac e Windows
   }
 }
+
+
+void grava_cliente(void) {
+  FILE *fp;
+  fp = fopen("clientes.txt","wt");
+  if (fp == NULL){
+    printf("Erro na criacao do arquivo\n!");
+  }
+fprintf(fp,"cli");
+fclose(fp);
+};
