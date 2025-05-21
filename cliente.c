@@ -110,6 +110,7 @@ void ler_nome(char*nome) {
   do {
     printf ("Digite o nome do cliente: ");
     fgets(nome,50,stdin);
+    nome[strcspn(nome, "\n")] = '\0';
     if(!valida_nome(nome)) {
         printf("Nome inválido!");
     }
@@ -121,6 +122,7 @@ void ler_cpf(char*cpf) {
   do {
     printf("Digite o CPF do cliente: ");
     fgets(cpf,13,stdin);
+    cpf[strcspn(cpf, "\n")] = '\0';
     if (!valida_cpf(cpf)) {
       printf("CPF inválido!\n");
     }
@@ -132,6 +134,7 @@ void ler_fone(char*fone) {
   do{
     printf("Informe o telefone do cliente: ");
     fgets(fone,13,stdin);
+    fone[strcspn(fone, "\n")] = '\0';
     if (!valida_fone(fone)) {
       printf("Telefone inválido!");
     }
@@ -143,6 +146,7 @@ void ler_email(char*email) {
   do{
     printf("Informe o Email do cliente: ");
     fgets(email,30,stdin);
+    email[strcspn(email, "\n")] = '\0';
     if (!valida_email(email)) {
       printf("Formato de email inválido!");
     }
