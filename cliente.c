@@ -29,7 +29,7 @@ void modulo_cliente(void){
 char tela_cliente(void){
   system("cls||clear");
   char op;
-  printf("#============================# \n");
+  printf("\n#============================# \n");
   printf("|           CLIENTES         | \n");
   printf("|                            | \n");
   printf("|  1 - CADASTRO              | \n");
@@ -46,6 +46,8 @@ char tela_cliente(void){
 
 
 void cadastro_cliente(void){
+  system("cls||clear");
+
   Cliente *cli;
   cli = (Cliente*) malloc(sizeof(Cliente));
 
@@ -66,14 +68,27 @@ void cadastro_cliente(void){
 
 void pesquisar_cliente (void){
   system("cls||clear");
-  char cpf[13];
-  printf("#============================# \n");
-  printf("|           PESQUISA           \n");
-  printf("|                              \n");
-  printf("| Informe o CPF do cliente:    \n");
-  ler_cpf(cpf);
-  printf("|                              \n");
-  printf("#============================# \n"); 
+
+  FILE *fp;
+  char linha[255];
+
+  fp = fopen("clientes.txt", "rt");
+  if (fp == NULL){
+    printf("Erro na criação do arquivo!\n");
+  }
+  while (fscanf(fp,"%[^\n]",linha) == 1){
+  printf("%s", linha);
+  fgetc(fp);
+  }
+  fclose(fp);
+  // char cpf[13];
+  // printf("#============================# \n");
+  // printf("|           PESQUISA           \n");
+  // printf("|                              \n");
+  // printf("| Informe o CPF do cliente:    \n");
+  // ler_cpf(cpf);
+  // printf("|                              \n");
+  // printf("#============================# \n"); 
 }
 
 
