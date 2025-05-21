@@ -4,6 +4,7 @@
 #include "pedido.h"
 #include "gestao.h"
 #include "valida.h"
+#include "util.h"
 
 //ASSINATURA DAS FUNÇÕES
 char tela_principal(void);
