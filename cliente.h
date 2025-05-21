@@ -1,4 +1,4 @@
-typedef struct cliente cliente;
+typedef struct cliente Cliente;
 struct cliente
 {
   char nome[50];
@@ -15,7 +15,7 @@ void cadastro_cliente(void);
 void pesquisar_cliente (void);
 void atualizar_cliente(void);
 void excluir_cliente(void);
-void ler_nome(char nome[50]);
-void ler_cpf(char cpf[13]);
-void ler_fone(char fone[13]);
-void ler_email(char email[30]);
+void ler_nome(char*);
+void ler_cpf(char*);
+void ler_fone(char*);
+void ler_email(char*);

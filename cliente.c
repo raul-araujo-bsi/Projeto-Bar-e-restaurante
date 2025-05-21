@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include "cliente.h"
 #include "valida.h"
+#include "util.h"
 
 typedef struct cliente Cliente;
 
@@ -48,14 +49,13 @@ void cadastro_cliente(void){
   Cliente *cli;
   cli = (Cliente*) malloc(sizeof(Cliente));
 
-  limpaTela();
   printf("#============================# \n");
   printf("           CADASTRO            \n");
   printf("                               \n");
-  ler_nome(cli);
-  ler_cpf(cli);    
-  ler_fone(cli);
-  ler_email(cli);
+  ler_nome(cli->nome);
+  ler_cpf(cli -> cpf);    
+  ler_fone(cli -> fone);
+  ler_email(cli -> email);
   printf("                               \n");
   printf("#============================# \n");   
 
@@ -108,7 +108,6 @@ void excluir_cliente(void){
 
 void ler_nome(char*nome) {
   do {
-    int tam;
     printf ("Digite o nome do cliente: ");
     fgets(nome,50,stdin);
     if(!valida_nome(nome)) {
@@ -118,13 +117,10 @@ void ler_nome(char*nome) {
 }
 
 
-void ler_cpf(char cpf[13]) {
+void ler_cpf(char*cpf) {
   do {
-    int tam;
     printf("Digite o CPF do cliente: ");
     fgets(cpf,13,stdin);
-    tam = strlen(cpf);
-    cpf[tam-1] = '\0';
     if (!valida_cpf(cpf)) {
       printf("CPF inválido!\n");
     }
@@ -132,13 +128,10 @@ void ler_cpf(char cpf[13]) {
 }
 
 
-void ler_fone(char fone[13]) {
+void ler_fone(char*fone) {
   do{
-    int tam;
     printf("Informe o telefone do cliente: ");
     fgets(fone,13,stdin);
-    tam = strlen(fone);
-    fone[tam-1] = '\0';
     if (!valida_fone(fone)) {
       printf("Telefone inválido!");
     }
@@ -146,13 +139,10 @@ void ler_fone(char fone[13]) {
 }
 
 
-void ler_email(char email[30]) {
+void ler_email(char*email) {
   do{
-    int tam;
     printf("Informe o Email do cliente: ");
     fgets(email,30,stdin);
-    tam = strlen(email);
-    email[tam-1] = '\0';
     if (!valida_email(email)) {
       printf("Formato de email inválido!");
     }
