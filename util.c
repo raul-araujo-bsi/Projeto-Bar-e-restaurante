@@ -2,8 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <util.h>
-
+#include "cliente.h"
+#include "util.h"
 
 void delay(int segundos) {
   int tempo = 1000 * segundos;
@@ -24,12 +24,12 @@ void limpaTela(void) {
 }
 
 
-void grava_cliente(void) {
+void grava_cliente(Cliente*cli) {
   FILE *fp;
   fp = fopen("clientes.txt","wt");
   if (fp == NULL){
     printf("Erro na criacao do arquivo\n!");
   }
-fprintf(fp,"cli");
+fprintf(fp,"%s, %s, %s, %s\n", cli->nome, cli->cpf, cli->fone, cli->email);
 fclose(fp);
 };
