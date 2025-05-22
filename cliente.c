@@ -90,9 +90,9 @@ void pesquisar_cliente (void){
       getchar();
       return;
     }
-    printf("Cliente não encontrado!");
-    getchar();
   }
+  printf("Cliente não encontrado!");
+  getchar();
   fclose(fp);
 }
 
