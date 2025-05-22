@@ -26,10 +26,16 @@ void limpaTela(void) {
 
 void grava_cliente(Cliente*cli) {
   FILE *fp;
-  fp = fopen("clientes.txt","wt");
-  if (fp == NULL){
+  fp = fopen("clientes.txt","rt");
+  if (fp != NULL){
+    fclose(fp);
+    fp = fopen("clientes.txt","at");
+  } else {
+    fp = fopen("clientes.txt","wt");
+    }
+  if (fp == NULL) {
     printf("Erro na criacao do arquivo\n!");
   }
 fprintf(fp,"%s, %s, %s, %s\n", cli->nome, cli->cpf, cli->fone, cli->email);
 fclose(fp);
-};
+}
