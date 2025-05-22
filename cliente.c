@@ -68,27 +68,32 @@ void cadastro_cliente(void){
 
 void pesquisar_cliente (void){
   system("cls||clear");
-
+  
   FILE *fp;
   char linha[255];
-
+  char cpf[13];
+  
+  printf("#============================# \n");
+  printf("|           PESQUISA           \n");
+  printf("|                              \n");
+  printf("| Informe o CPF do cliente:    \n");
+  ler_cpf(cpf);
+  printf("|                              \n");
+  printf("#============================# \n"); 
   fp = fopen("clientes.txt", "rt");
   if (fp == NULL){
     printf("Erro na criação do arquivo!\n");
   }
-  while (fscanf(fp,"%[^\n]",linha) == 1){
-  printf("%s", linha);
-  fgetc(fp);
+  while (fgets(linha, sizeof(linha),fp)) {
+    if (strstr(linha,cpf)) {
+      printf("Cliente encontrado: \n %s", linha);
+      getchar();
+      return;
+    }
+    printf("Cliente não encontrado!");
+    getchar();
   }
   fclose(fp);
-  // char cpf[13];
-  // printf("#============================# \n");
-  // printf("|           PESQUISA           \n");
-  // printf("|                              \n");
-  // printf("| Informe o CPF do cliente:    \n");
-  // ler_cpf(cpf);
-  // printf("|                              \n");
-  // printf("#============================# \n"); 
 }
 
 
