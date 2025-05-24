@@ -102,27 +102,53 @@ void excluir_produto(void) {
 
 ler_fornecedor(char* fornecedor){
   do {
-  printf ("Digite o nome do cliente: ");
+  printf ("Digite o nome do fornecedor: ");
   fgets(fornecedor,30,stdin);
   fornecedor[strcspn(fornecedor, "\n")] = '\0';
   if(!valida_nome(fornecedor)) {
     printf("Nome inválido!");
   }
-} while(!valida_nome(fornecedor));
+  } while(!valida_nome(fornecedor));
 }
+
+
 ler_produto(char* produto){
   do {
-  printf ("Digite o nome do cliente: ");
+  printf ("Digite o nome do produto: ");
   fgets(produto,20,stdin);
   produto[strcspn(produto, "\n")] = '\0';
   if(!valida_nome(produto)) {
     printf("Nome inválido!");
   }
-} while(!valida_nome(produto));
+  } while(!valida_nome(produto));
 }
+
+
 ler_quantidade(char* quantidade){
+  do{
+    printf("Digite a quantidade de produtos: ");
+    fgets(quantidade,6,stdin);
+    quantidade[strcspn(quantidade, "\n")] = '\0';
+    if(!isdigit(quantidade)){
+      printf("Quantidade inválida!");
+      return 0;
+    } else {
+      printf("Quantidade salva com sucesso!");
+    }
+  } while (!isdigit(quantidade));
+}
 
-}    
+
 ler_valor(char* valor){
-
+  do{
+    printf("Digite o valor do produtos: ");
+    fgets(valor,6,stdin);
+    valor[strcspn(valor, "\n")] = '\0';
+    if(!isdigit(valor)){
+      printf("Quantidade inválida!");
+      return 0;
+    } else {
+      printf("Quantidade salva com sucesso!");
+    }
+  } while (!isdigit(valor));
 }
