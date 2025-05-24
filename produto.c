@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "produto.h"
+#include "valida.h"
 
 typedef struct produto Produto;
 
@@ -52,7 +53,7 @@ void cadastrar_produto(void) {
   printf("#============================# \n");
   printf("           CADASTRO            \n");
   printf("                               \n");
-  ler_fornecedor(prod-> fornecedor);
+  ler_fornecedor(prod -> fornecedor);
   ler_produto(prod -> produto);
   ler_quantidade(prod -> quantidade);    
   ler_valor(prod -> valor);
@@ -96,4 +97,32 @@ void excluir_produto(void) {
   printf("                                             \n");
   printf("#==========================================# \n");
   getchar();
+}
+
+
+ler_fornecedor(char* fornecedor){
+  do {
+  printf ("Digite o nome do cliente: ");
+  fgets(fornecedor,30,stdin);
+  fornecedor[strcspn(fornecedor, "\n")] = '\0';
+  if(!valida_nome(fornecedor)) {
+    printf("Nome inválido!");
+  }
+} while(!valida_nome(fornecedor));
+}
+ler_produto(char* produto){
+  do {
+  printf ("Digite o nome do cliente: ");
+  fgets(produto,20,stdin);
+  produto[strcspn(produto, "\n")] = '\0';
+  if(!valida_nome(produto)) {
+    printf("Nome inválido!");
+  }
+} while(!valida_nome(produto));
+}
+ler_quantidade(char* quantidade){
+
+}    
+ler_valor(char* valor){
+
 }

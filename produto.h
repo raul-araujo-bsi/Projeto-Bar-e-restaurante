@@ -2,8 +2,8 @@ typedef struct produto Produto;
 struct produto
 {
   char id[20];
-  char fornecedor [50];
-  char produto [30];
+  char fornecedor [30];
+  char produto [20];
   char quantidade [6];
   char valor [8];
 };
