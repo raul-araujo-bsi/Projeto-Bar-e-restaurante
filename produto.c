@@ -2,12 +2,14 @@
 #include <stdlib.h>
 #include "gestao.h"
 
-void modulo_gestao(void){
+typedef struct produto Produto;
+
+void modulo_produtos(void){
   system("cls||clear");
   char opcao;
 
   do {
-    opcao = tela_gestao();
+    opcao = tela_produtos();
     switch(opcao){
       case '1': cadastrar_produto();
         break;
@@ -22,7 +24,7 @@ void modulo_gestao(void){
 }
 
 
-char tela_gestao(void) {
+char tela_produtos(void) {
   system("cls||clear");
   char op;
   printf("#============================# \n");
