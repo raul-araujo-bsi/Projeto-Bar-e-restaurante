@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "gestao.h"
+#include "produto.h"
 
 typedef struct produto Produto;
 
@@ -45,17 +45,22 @@ char tela_produtos(void) {
 
 void cadastrar_produto(void) {
   system("cls||clear");
+
+  Produto *prod;
+  prod = (Produto*) malloc(sizeof(Produto));
+
   printf("#============================# \n");
-  printf("|    CADASTRO DE PRODUTOS    | \n");
-  printf("|                            | \n");
-  printf("|  Id:                       | \n");
-  printf("|  Fornecedor:               | \n");
-  printf("|  Produto:                  | \n");
-  printf("|  Quantidade:               | \n");
-  printf("|  Valor:                    | \n");
-  printf("|                            | \n");
-  printf("#============================# \n");
-  getchar();
+  printf("           CADASTRO            \n");
+  printf("                               \n");
+  ler_fornecedor(prod-> fornecedor);
+  ler_produto(prod -> produto);
+  ler_quantidade(prod -> quantidade);    
+  ler_valor(prod -> valor);
+  printf("                               \n");
+  printf("#============================# \n");   
+
+  grava_cliente(prod);
+  free(prod);
 }
 
 
