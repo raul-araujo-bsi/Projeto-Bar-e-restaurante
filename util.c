@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "cliente.h"
+#include "produto.h"
 #include "util.h"
 
 void delay(int segundos) {
@@ -38,4 +39,27 @@ void grava_cliente(Cliente*cli) {
   }
 fprintf(fp,"%s, %s, %s, %s\n", cli->nome, cli->cpf, cli->fone, cli->email);
 fclose(fp);
+}
+
+
+void grava_produto(Produto*prod) {
+  FILE *fp;
+  fp = fopen("produtos.txt","rt");
+  if (fp != NULL){
+    fclose(fp);
+    fp = fopen("produtos.txt","at");
+  } else {
+    fp = fopen("produtos.txt","wt");
+    }
+  if (fp == NULL) {
+    printf("Erro na criacao do arquivo\n!");
+  }
+fprintf(fp,"%s, %s, %s, %s, %s\n",prod->id, prod->fornecedor, prod->produto, prod->quantidade, prod->valor);
+fclose(fp);
+}
+
+
+int gera_id(int id){
+  id++;
+  return id;
 }
