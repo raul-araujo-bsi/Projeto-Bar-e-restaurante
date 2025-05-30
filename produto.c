@@ -58,7 +58,7 @@ void cadastrar_produto(void) {
   ler_fornecedor(prod -> fornecedor);
   ler_produto(prod -> produto);
   ler_quantidade(prod -> quantidade);    
-  ler_valor(prod -> valor);
+  ler_valor(&prod -> valor);
   printf("                               \n");
   printf("#============================# \n");   
 
