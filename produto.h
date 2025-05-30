@@ -1,11 +1,12 @@
 typedef struct produto Produto;
 struct produto
 {
-  char id[20];
+  int id;
   char fornecedor [30];
   char produto [20];
-  char quantidade [6];
-  char valor [8];
+  int quantidade;
+  float valor;
+  int status;
 };
 
 

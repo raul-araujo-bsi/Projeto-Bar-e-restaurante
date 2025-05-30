@@ -1,7 +1,9 @@
+#include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include "produto.h"
 #include "valida.h"
+#include "util.h"
 
 typedef struct produto Produto;
 
@@ -60,7 +62,7 @@ void cadastrar_produto(void) {
   printf("                               \n");
   printf("#============================# \n");   
 
-  grava_cliente(prod);
+  grava_produto(prod);
   free(prod);
 }
 
@@ -100,7 +102,7 @@ void excluir_produto(void) {
 }
 
 
-ler_fornecedor(char* fornecedor){
+void ler_fornecedor(char* fornecedor){
   do {
   printf ("Digite o nome do fornecedor: ");
   fgets(fornecedor,30,stdin);
@@ -112,7 +114,7 @@ ler_fornecedor(char* fornecedor){
 }
 
 
-ler_produto(char* produto){
+void ler_produto(char* produto){
   do {
   printf ("Digite o nome do produto: ");
   fgets(produto,20,stdin);
@@ -124,7 +126,7 @@ ler_produto(char* produto){
 }
 
 
-ler_quantidade(char* quantidade){
+void ler_quantidade(int* quantidade){
   do{
     printf("Digite a quantidade de produtos: ");
     fgets(quantidade,6,stdin);
@@ -139,12 +141,14 @@ ler_quantidade(char* quantidade){
 }
 
 
-ler_valor(char* valor){
+void ler_valor(float* valor){
+  char valor_char;
+  
   do{
     printf("Digite o valor do produtos: ");
-    fgets(valor,6,stdin);
-    valor[strcspn(valor, "\n")] = '\0';
-    if(!isdigit(valor)){
+    fgets(valor_char,6,stdin);
+    valor[strcspn(valor_char, "\n")] = '\0';
+    if(!isdigit(valor_char)){
       printf("Quantidade inválida!");
       return 0;
     } else {
