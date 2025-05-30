@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "cliente.h"
 #include "pedido.h"
-#include "gestao.h"
+#include "produto.h"
 #include "valida.h"
 #include "util.h"
 
@@ -23,7 +23,7 @@ int main (void) {
         break;
       case '2': modulo_pedido();
         break;
-      case '3': modulo_gestao();
+      case '3': modulo_pedido();
         break;
       case '4': //modulo_relatorios();
         break;
