@@ -54,12 +54,12 @@ void grava_produto(Produto*prod) {
   if (fp == NULL) {
     printf("Erro na criacao do arquivo\n!");
   }
-fprintf(fp,"%s, %s, %s, %s, %s\n",prod->id, prod->fornecedor, prod->produto, prod->quantidade, prod->valor);
+fprintf(fp,"%d, %s, %s, %d, %.2f\n",prod->id, prod->fornecedor, prod->produto, prod->quantidade, prod->valor);
 fclose(fp);
 }
 
 
-int gera_id(int id){
+int gera_id(int* id){
   id++;
   return id;
 }
