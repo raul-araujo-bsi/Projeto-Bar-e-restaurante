@@ -16,3 +16,7 @@ void cadastrar_produto(void);
 void pesquisar_produto(void);
 void atualizar_produto(void);
 void excluir_produto(void);
+void ler_fornecedor(char* );
+void ler_produto(char* );
+void ler_quantidade(int* );
+void ler_valor(float* );
