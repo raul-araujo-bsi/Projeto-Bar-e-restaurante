@@ -127,32 +127,19 @@ void ler_produto(char* produto){
 
 
 void ler_quantidade(int* quantidade){
-  do{
-    printf("Digite a quantidade de produtos: ");
-    fgets(quantidade,6,stdin);
-    quantidade[strcspn(quantidade, "\n")] = '\0';
-    if(!isdigit(quantidade)){
-      printf("Quantidade inválida!");
-      return 0;
-    } else {
-      printf("Quantidade salva com sucesso!");
-    }
-  } while (!isdigit(quantidade));
+  char qntd[5];
+  printf("Digite a quantidade: ");
+  fgets(qntd, sizeof(qntd), stdin);
+  qntd[strcspn(qntd, "\n")] = '\0';
+  *quantidade = atoi(qntd);
 }
 
 
 void ler_valor(float* valor){
-  char valor_char;
-  
-  do{
-    printf("Digite o valor do produtos: ");
-    fgets(valor_char,6,stdin);
-    valor[strcspn(valor_char, "\n")] = '\0';
-    if(!isdigit(valor_char)){
-      printf("Quantidade inválida!");
-      return 0;
-    } else {
-      printf("Quantidade salva com sucesso!");
-    }
-  } while (!isdigit(valor));
+  char valor_char[7];
+
+  printf("Digite o valor: R$ ");
+  fgets(valor_char, sizeof(valor_char), stdin);
+  valor_char[strcspn(valor_char, "\n")] = '\0';
+  *valor = atof(valor_char);
 }
