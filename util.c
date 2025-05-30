@@ -59,7 +59,9 @@ fclose(fp);
 }
 
 
-int gera_id(int* id){
-  id++;
+int gera_id(void){
+  int* id = malloc(sizeof(id));
+  *id = id++;
   return id;
+  free(id);
 }

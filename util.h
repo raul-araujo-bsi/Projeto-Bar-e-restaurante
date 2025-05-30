@@ -1,3 +1,3 @@
 void limpaTela(void);
 void grava_cliente(Cliente*cli);
-int gera_id(int*);
+int gera_id(void);
