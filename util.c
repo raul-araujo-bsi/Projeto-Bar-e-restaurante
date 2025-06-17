@@ -25,43 +25,48 @@ void limpaTela(void) {
 }
 
 
-void grava_cliente(Cliente*cli) {
-  FILE *fp;
-  fp = fopen("clientes.txt","rt");
-  if (fp != NULL){
-    fclose(fp);
-    fp = fopen("clientes.txt","at");
-  } else {
-    fp = fopen("clientes.txt","wt");
-    }
+void grava_cliente(Cliente* cli) {
+  FILE* fp = fopen("clientes.bin", "ab");  // "ab" para acrescentar no final
   if (fp == NULL) {
-    printf("Erro na criacao do arquivo\n!");
+    printf("Erro ao abrir o arquivo de clientes!\n");
+    return;
   }
-fprintf(fp,"%s, %s, %s, %s\n", cli->nome, cli->cpf, cli->fone, cli->email);
-fclose(fp);
+  fwrite(cli, sizeof(Cliente), 1, fp);
+  fclose(fp);
+  printf("Cliente gravado com sucesso!\n");
 }
 
 
-void grava_produto(Produto*prod) {
-  FILE *fp;
-  fp = fopen("produtos.txt","rt");
-  if (fp != NULL){
-    fclose(fp);
-    fp = fopen("produtos.txt","at");
-  } else {
-    fp = fopen("produtos.txt","wt");
-    }
+
+void grava_produto(Produto *prod) {
+  FILE *fp = fopen("produtos.bin", "ab");
   if (fp == NULL) {
-    printf("Erro na criacao do arquivo\n!");
+    printf("Erro ao abrir o arquivo.\n");
+    return;
   }
-fprintf(fp,"%d, %s, %s, %d, %.2f\n",prod->id, prod->fornecedor, prod->produto, prod->quantidade, prod->valor);
-fclose(fp);
+  fwrite(prod, sizeof(Produto), 1, fp);
+  fclose(fp);
 }
 
 
-int gera_id(void){
-  int* id = malloc(sizeof(id));
-  *id = id++;
-  return id;
-  free(id);
+int gera_id(void) {
+    FILE *fp = fopen("id_produto.bin", "rb+");
+    int id = 0;
+
+    if (fp == NULL) {
+        fp = fopen("id_produto.bin", "wb+");
+        if (fp == NULL) {
+            printf("Erro ao criar o arquivo de ID!\n");
+            exit(1);
+        }
+    } else {
+        fread(&id, sizeof(int), 1, fp);
+    }
+
+    id++;
+    rewind(fp);
+    fwrite(&id, sizeof(int), 1, fp);
+    fclose(fp);
+
+    return id;
 }
