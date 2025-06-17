@@ -52,6 +52,8 @@ void cadastrar_produto(void) {
   Produto *prod;
   prod = (Produto*) malloc(sizeof(Produto));
 
+  prod->id = gera_id();
+
   printf("#============================# \n");
   printf("           CADASTRO            \n");
   printf("                               \n");
@@ -68,37 +70,136 @@ void cadastrar_produto(void) {
 
 
 void pesquisar_produto(void) {
-  system("cls||clear");
-  printf("#=================================# \n");
-  printf("|              PRODUTOS           | \n");
-  printf("#=================================# \n");
-  printf("   Id   Produto            Valor    \n");
-  printf("#=================================# \n");
-  getchar();
+  FILE *fp = fopen("produtos.bin", "rb");
+  Produto prod;
+  int id;
+
+  printf("Digite o ID do produto: ");
+  scanf("%d", &id);
+
+  if (fp == NULL) {
+    printf("Arquivo não encontrado.\n");
+    return;
+  }
+
+  while (fread(&prod, sizeof(Produto), 1, fp)) {
+    if (prod.id == id && prod.status == 1) {
+      printf("Fornecedor: %s\n", prod.fornecedor);
+      printf("Produto: %s\n", prod.produto);
+      printf("Quantidade: %d\n", prod.quantidade);
+      printf("Valor: %.2f\n", prod.valor);
+      fclose(fp);
+      return;
+    }
+  }
+
+  printf("Produto não encontrado.\n");
+  fclose(fp);
 }
 
 
 void atualizar_produto(void) {
-  system("cls||clear");
-  printf("#==========================================# \n");
-  printf("|           ATUALIZAR PRODUTO              | \n");
-  printf("#==========================================# \n");
-  printf(" Informe o Id do produto a ser atualizado:   \n");
-  printf("                                             \n");
-  printf("#==========================================# \n"); 
+  FILE *fp = fopen("produtos.bin", "r+b");
+  if (!fp) {
+      printf("Erro ao abrir arquivo de produtos.\n");
+      return;
+  }
+
+  int id_busca;
+  printf("Digite o ID do produto para atualizar: ");
+  scanf("%d", &id_busca);
   getchar();
-}
+
+  Produto prod;
+  int encontrado = 0;
+
+  while (fread(&prod, sizeof(Produto), 1, fp)) {
+    if (prod.id == id_busca && prod.status == 1) {
+      encontrado = 1;
+      printf("Produto encontrado:\n");
+      printf("Fornecedor: %s\n", prod.fornecedor);
+      printf("Produto: %s\n", prod.produto);
+      printf("Quantidade: %d\n", prod.quantidade);
+      printf("Valor: %.2f\n", prod.valor);
+
+      int opcao;
+      printf("Qual campo deseja atualizar?\n");
+      printf("1 - Quantidade\n2 - Valor\n");
+      printf("Digite a opção: ");
+      scanf("%d", &opcao);
+      getchar();
+
+      switch (opcao) {
+        case 1:
+          ler_quantidade(prod.fornecedor);
+          break;
+        case 2:
+          ler_valor(prod.produto);
+          break;
+        default:
+          printf("Opção inválida.\n");
+          fclose(fp);
+          return;
+      }
+      fseek(fp, -sizeof(Produto), SEEK_CUR);
+      fwrite(&prod, sizeof(Produto), 1, fp);
+      printf("Produto atualizado com sucesso!\n");
+      break;
+    }
+  }
+
+  if (!encontrado) {
+      printf("Produto com ID %d não encontrado.\n", id_busca);
+  }
+
+  fclose(fp);
+} //função desenvolvida com auxilio do ChatGPT
 
 
 void excluir_produto(void) {
-  system("cls||clear");
-  printf("#==========================================# \n");
-  printf("|            CANCELAR PRODUTO              | \n");
-  printf("#==========================================# \n");
-  printf(" Informe o Id do produto a ser cancelado:    \n");
-  printf("                                             \n");
-  printf("#==========================================# \n");
+  FILE *fp = fopen("produtos.bin", "r+b");
+  if (!fp) {
+    printf("Erro ao abrir arquivo de produtos.\n");
+    return;
+  }
+
+  int id_busca;
+  printf("Digite o ID do produto para excluir: ");
+  scanf("%d", &id_busca);
   getchar();
+
+  Produto prod;
+  int encontrado = 0;
+
+  while (fread(&prod, sizeof(Produto), 1, fp)) {
+    if (prod.id == id_busca && prod.status == 1) {
+      encontrado = 1;
+      printf("Produto encontrado:\n");
+      printf("Fornecedor: %s\n", prod.fornecedor);
+      printf("Produto: %s\n", prod.produto);
+      printf("Quantidade: %d\n", prod.quantidade);
+      printf("Valor: %.2f\n", prod.valor);
+
+      printf("Confirma exclusão? (s/n): ");
+      char confirma = getchar();
+      getchar();
+      if (confirma == 's' || confirma == 'S') {
+        prod.status = 0;
+        fseek(fp, -sizeof(Produto), SEEK_CUR);
+        fwrite(&prod, sizeof(Produto), 1, fp);
+        printf("Produto excluído com sucesso.\n");
+      } else {
+        printf("Exclusão cancelada.\n");
+      }
+      break;
+    }
+  }
+
+  if (!encontrado) {
+    printf("Produto com ID %d não encontrado ou já excluído.\n", id_busca);
+  }
+
+  fclose(fp);
 }
 
 
