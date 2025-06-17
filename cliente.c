@@ -66,64 +66,74 @@ void cadastro_cliente(void){
 }
 
 
-void pesquisar_cliente (void){
-  system("cls||clear");
-  
-  FILE *fp;
-  char linha[255];
-  char cpf[13];
-  
-  printf("#============================# \n");
-  printf("|           PESQUISA           \n");
-  printf("|                              \n");
-  printf("| Informe o CPF do cliente:    \n");
-  ler_cpf(cpf);
-  printf("|                              \n");
-  printf("#============================# \n"); 
-  fp = fopen("clientes.txt", "rt");
-  if (fp == NULL){
-    printf("Erro na criação do arquivo!\n");
+Cliente* busca_cliente(char* cpf_busca) {
+  FILE* fp = fopen("clientes.bin", "rb");
+  if (fp == NULL) {
+    printf("Clientes inexistente.\n");
+    return NULL;
   }
-  while (fgets(linha, sizeof(linha),fp)) {
-    if (strstr(linha,cpf)) {
-      printf("Cliente encontrado: \n %s", linha);
-      getchar();
+
+  Cliente* cli = (Cliente*) malloc(sizeof(Cliente));
+  while (fread(cli, sizeof(Cliente), 1, fp)) {
+    if (cli->status == 1 && strcmp(cli->cpf, cpf_busca) == 0) {
+      fclose(fp);
+      return cli;
+    }
+  }
+
+  fclose(fp);
+  free(cli);
+  return NULL;
+}
+
+
+void atualiza_cliente(char* cpf_busca, Cliente* novo_cli) {
+  FILE* fp = fopen("clientes.bin", "r+b");
+  if (fp == NULL) {
+    printf("Erro ao abrir o arquivo de clientes!\n");
+    return;
+  }
+
+  Cliente cli;
+  while (fread(&cli, sizeof(Cliente), 1, fp)) {
+    if (cli.status == 1 && strcmp(cli.cpf, cpf_busca) == 0) {
+      fseek(fp, -sizeof(Cliente), SEEK_CUR);
+      fwrite(novo_cli, sizeof(Cliente), 1, fp);
+      printf("Cliente atualizado com sucesso!\n");
+      fclose(fp);
       return;
     }
   }
-  printf("Cliente não encontrado!");
-  getchar();
+
+  printf("Cliente não encontrado para atualização.\n");
   fclose(fp);
 }
 
 
-void atualizar_cliente(void){
-  system("cls||clear");
-  char fone[13];
-  char email[30];
-  printf("#============================# \n");
-  printf("             CADASTRO          \n");
-  printf("                               \n");
-  printf("  TELEFONE:                    \n");   
-  ler_fone(fone); 
-  printf("  E-MAIL:                      \n");
-  ler_email(email);
-  printf("                               \n");
-  printf("#============================# \n");
+
+void remove_cliente(char* cpf_busca) {
+  FILE* fp = fopen("clientes.bin", "r+b");
+  if (fp == NULL) {
+    printf("Erro ao abrir o arquivo de clientes!\n");
+    return;
+  }
+
+  Cliente cli;
+  while (fread(&cli, sizeof(Cliente), 1, fp)) {
+    if (cli.status == 1 && strcmp(cli.cpf, cpf_busca) == 0) {
+      cli.status = 0;
+      fseek(fp, -sizeof(Cliente), SEEK_CUR);
+      fwrite(&cli, sizeof(Cliente), 1, fp);
+      printf("Cliente removido com sucesso!\n");
+      fclose(fp);
+      return;
+    }
+  }
+
+  printf("Cliente não encontrado.\n");
+  fclose(fp);
 }
 
-
-void excluir_cliente(void){
-  system("cls||clear");
-  char cpf[13];
-  printf("#============================# \n");
-  printf("            EXCLUIR            \n");
-  printf("                               \n");
-  printf("  Informe o CPF do cliente:    \n");
-  ler_cpf(cpf);
-  printf("                               \n");
-  printf("#============================# \n"); 
-}
 
 
 void ler_nome(char*nome) {
