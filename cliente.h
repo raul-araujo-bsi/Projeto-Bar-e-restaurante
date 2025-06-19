@@ -1,3 +1,7 @@
+
+#ifndef CLIENTE_H  //sugestão do GPT
+#define CLIENTE_H  //sugestão do GPT
+
 typedef struct cliente Cliente;
 struct cliente
 {
@@ -9,12 +13,16 @@ struct cliente
 };
 
 
+
 void modulo_cliente(void);
 char tela_cliente(void);
 void cadastro_cliente(void);
-void pesquisar_cliente (void);
-void atualizar_cliente(void);
-void excluir_cliente(void);
+Cliente* pesquisar_cliente (char* cpf_busca);
+void atualizar_cliente(char* cpf_busca);
+void excluir_cliente(char* cpf_busca);
+
+#endif //sugestão do GPT
+
 void ler_nome(char*);
 void ler_cpf(char*);
 void ler_fone(char*);

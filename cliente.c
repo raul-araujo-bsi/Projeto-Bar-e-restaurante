@@ -13,13 +13,14 @@ void modulo_cliente(void){
   do {
     opcao = tela_cliente();
     switch(opcao){
+      char cpf_busca[13];
       case '1': cadastro_cliente();
         break;
-      case '2': pesquisar_cliente();
+      case '2': pesquisar_cliente(cpf_busca);
         break;
-      case '3': atualizar_cliente();
+      case '3': atualizar_cliente(cpf_busca);
         break;
-      case '4': excluir_cliente();
+      case '4': excluir_cliente(cpf_busca);
         break;
     }
   } while (opcao != '0');
@@ -66,13 +67,14 @@ void cadastro_cliente(void){
 }
 
 
-Cliente* busca_cliente(char* cpf_busca) {
+Cliente* pesquisar_cliente(char* cpf_busca) {
   FILE* fp = fopen("clientes.bin", "rb");
   if (fp == NULL) {
-    printf("Clientes inexistente.\n");
+    printf("Sem clientes cadastrados.\n");
     return NULL;
   }
-
+  char cpf[13];
+  ler_cpf(cpf);
   Cliente* cli = (Cliente*) malloc(sizeof(Cliente));
   while (fread(cli, sizeof(Cliente), 1, fp)) {
     if (cli->status == 1 && strcmp(cli->cpf, cpf_busca) == 0) {
@@ -87,7 +89,7 @@ Cliente* busca_cliente(char* cpf_busca) {
 }
 
 
-void atualiza_cliente(char* cpf_busca, Cliente* novo_cli) {
+void atualizar_cliente(char* cpf_busca) {
   FILE* fp = fopen("clientes.bin", "r+b");
   if (fp == NULL) {
     printf("Erro ao abrir o arquivo de clientes!\n");
@@ -97,8 +99,16 @@ void atualiza_cliente(char* cpf_busca, Cliente* novo_cli) {
   Cliente cli;
   while (fread(&cli, sizeof(Cliente), 1, fp)) {
     if (cli.status == 1 && strcmp(cli.cpf, cpf_busca) == 0) {
+      Cliente novo_cli;
+
+      ler_nome(novo_cli.nome);
+      ler_cpf(novo_cli.cpf);
+      ler_fone(novo_cli.fone);
+      ler_email(novo_cli.email);
+      novo_cli.status = 1;
+
       fseek(fp, -sizeof(Cliente), SEEK_CUR);
-      fwrite(novo_cli, sizeof(Cliente), 1, fp);
+      fwrite(&novo_cli, sizeof(Cliente), 1, fp);
       printf("Cliente atualizado com sucesso!\n");
       fclose(fp);
       return;
@@ -111,7 +121,8 @@ void atualiza_cliente(char* cpf_busca, Cliente* novo_cli) {
 
 
 
-void remove_cliente(char* cpf_busca) {
+
+void excluir_cliente(char* cpf_busca) {
   FILE* fp = fopen("clientes.bin", "r+b");
   if (fp == NULL) {
     printf("Erro ao abrir o arquivo de clientes!\n");
