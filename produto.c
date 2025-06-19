@@ -57,8 +57,8 @@ void cadastrar_produto(void) {
   printf("#============================# \n");
   printf("           CADASTRO            \n");
   printf("                               \n");
-  ler_fornecedor(&prod -> fornecedor);
-  ler_produto(&prod -> produto);
+  ler_fornecedor(prod -> fornecedor);
+  ler_produto(prod -> produto);
   ler_quantidade(&prod -> quantidade);    
   ler_valor(&prod -> valor);
   printf("                               \n");
@@ -131,10 +131,10 @@ void atualizar_produto(void) {
 
       switch (opcao) {
         case 1:
-          ler_quantidade(prod.fornecedor);
+          ler_quantidade(&prod.quantidade);
           break;
         case 2:
-          ler_valor(prod.produto);
+          ler_valor(&prod.valor);
           break;
         default:
           printf("Opção inválida.\n");

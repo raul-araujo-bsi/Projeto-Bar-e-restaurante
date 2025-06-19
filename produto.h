@@ -1,3 +1,6 @@
+#ifndef PRODUTO_H //sugestão do GPT
+#define PRODUTO_H //sugestão do GPT
+
 typedef struct produto Produto;
 struct produto
 {
@@ -18,5 +21,7 @@ void atualizar_produto(void);
 void excluir_produto(void);
 void ler_fornecedor(char* );
 void ler_produto(char* );
-void ler_quantidade(int* );
-void ler_valor(float* );
+void ler_quantidade(int* quantidade);
+void ler_valor(float* valor);
+
+#endif //sugestão do GPT
