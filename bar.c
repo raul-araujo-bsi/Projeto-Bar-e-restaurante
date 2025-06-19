@@ -41,8 +41,8 @@ char tela_principal(void) {
     printf("|                            | \n");
     printf("|        1 - CLIENTE         | \n");
     printf("|        2 - PEDIDO          | \n");
-    printf("|        3 - GESTÃO          | \n");
-    printf("|        4 - RELATÓRIOS      | \n");
+    printf("|        3 - PRODUTOS        | \n");
+    printf("|        4 - RELATORIOS      | \n");
     printf("|        5 - SOBRE           | \n");
     printf("|        0 - SAIR            | \n");
     printf("|                            | \n");
