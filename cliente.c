@@ -76,16 +76,27 @@ Cliente* pesquisar_cliente(char* cpf_busca) {
   char cpf[13];
   ler_cpf(cpf);
   Cliente* cli = (Cliente*) malloc(sizeof(Cliente));
-  while (fread(cli, sizeof(Cliente), 1, fp)) {
-    if (cli->status == 1 && strcmp(cli->cpf, cpf_busca) == 0) {
-      fclose(fp);
-      return cli;
-    }
-  }
+  fread(cli, sizeof(Cliente), 1, fp);
+  
+  char opcao;
+  do {
 
-  fclose(fp);
-  free(cli);
-  return NULL;
+    if (cli != NULL) {
+      printf("\nCliente encontrado:\n");
+      printf("Nome: %s\n", cli->nome);
+      printf("CPF: %s\n", cli->cpf);
+      printf("Telefone: %s\n", cli->fone);
+      printf("Email: %s\n", cli->email);
+      free(cli);
+    } else {
+      printf("\nCliente não encontrado.\n");
+    }
+
+    printf("\nDeseja buscar outro cliente? (s/n): ");
+    scanf(" %c", &opcao);
+
+  } while (opcao == 's' || opcao == 'S');
+  return cli;
 }
 
 
