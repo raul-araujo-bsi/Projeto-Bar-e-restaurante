@@ -18,7 +18,7 @@ void modulo_cliente(void);
 char tela_cliente(void);
 void cadastro_cliente(void);
 Cliente* pesquisar_cliente (char* cpf_busca);
-void atualizar_cliente(char* cpf_busca);
+void atualizar_cliente(void);
 void excluir_cliente(char* cpf_busca);
 
 #endif //sugestão do GPT

@@ -18,7 +18,7 @@ void modulo_cliente(void){
         break;
       case '2': pesquisar_cliente(cpf_busca);
         break;
-      case '3': atualizar_cliente(cpf_busca);
+      case '3': atualizar_cliente();
         break;
       case '4': excluir_cliente(cpf_busca);
         break;
@@ -90,7 +90,7 @@ void cadastro_cliente(void){
 
 Cliente* pesquisar_cliente(char* cpf_busca) {
   limpaTela();
-  
+
   FILE* fp = fopen("clientes.bin", "rb");
   if (fp == NULL) {
     printf("Sem clientes cadastrados.\n");
@@ -123,27 +123,43 @@ Cliente* pesquisar_cliente(char* cpf_busca) {
 }
 
 
-void atualizar_cliente(char* cpf_busca) {
+void atualizar_cliente(void) {
+  limpaTela();
   FILE* fp = fopen("clientes.bin", "r+b");
   if (fp == NULL) {
     printf("Erro ao abrir o arquivo de clientes!\n");
     return;
   }
 
+  char cpf_busca[13];
+  ler_cpf(cpf_busca);
+
   Cliente cli;
   while (fread(&cli, sizeof(Cliente), 1, fp)) {
     if (cli.status == 1 && strcmp(cli.cpf, cpf_busca) == 0) {
-      Cliente novo_cli;
+      printf("\nCliente encontrado:\n");
+      printf("Nome: %s\n", cli.nome);
+      printf("CPF: %s\n", cli.cpf);
+      printf("Telefone atual: %s\n", cli.fone);
+      printf("Email atual: %s\n", cli.email);
 
-      ler_nome(novo_cli.nome);
-      ler_cpf(novo_cli.cpf);
-      ler_fone(novo_cli.fone);
-      ler_email(novo_cli.email);
-      novo_cli.status = 1;
+      char opcao;
+      printf("\nDeseja alterar o telefone? (s/n): ");
+      scanf(" %c", &opcao);
+      if (opcao == 's' || opcao == 'S') {
+        ler_fone(cli.fone);
+      }
+
+      printf("Deseja alterar o email? (s/n): ");
+      scanf(" %c", &opcao);
+      if (opcao == 's' || opcao == 'S') {
+        ler_email(cli.email);
+      }
 
       fseek(fp, -sizeof(Cliente), SEEK_CUR);
-      fwrite(&novo_cli, sizeof(Cliente), 1, fp);
-      printf("Cliente atualizado com sucesso!\n");
+      fwrite(&cli, sizeof(Cliente), 1, fp);
+      printf("\nCliente atualizado com sucesso!\n");
+
       fclose(fp);
       return;
     }
@@ -152,7 +168,6 @@ void atualizar_cliente(char* cpf_busca) {
   printf("Cliente não encontrado para atualização.\n");
   fclose(fp);
 }
-
 
 
 
