@@ -51,13 +51,18 @@ void cadastro_cliente(void){
 
   Cliente *cli;
   cli = (Cliente*) malloc(sizeof(Cliente));
+  if (cli == NULL) {
+    printf("Erro ao alocar memória.\n");
+    return;
+  }
 
   printf("#============================# \n");
   printf("           CADASTRO            \n");
   printf("                               \n");
   ler_nome(cli->nome);
   ler_cpf(cli -> cpf);    
-  FILE* fp = fopen("clientes.bin", "rb");
+
+  FILE* fp = fopen("clientes.bin", "ab+");
   if (fp != NULL) {
     Cliente temp;
     while (fread(&temp, sizeof(Cliente), 1, fp)) {
@@ -84,6 +89,8 @@ void cadastro_cliente(void){
 
 
 Cliente* pesquisar_cliente(char* cpf_busca) {
+  limpaTela();
+  
   FILE* fp = fopen("clientes.bin", "rb");
   if (fp == NULL) {
     printf("Sem clientes cadastrados.\n");
