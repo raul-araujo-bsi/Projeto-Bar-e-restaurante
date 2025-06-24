@@ -12,6 +12,7 @@ void delay(int segundos) {
   while (clock() < inicio + tempo) {
     // não faz nada, apenas gasta tempo
   }
+  limpaTela();
 }
 
 
@@ -19,9 +20,7 @@ void delay(int segundos) {
 /// Limpa a tela; funciona em Linux / MacOS / Windows
 ///
 void limpaTela(void) {
-  if (system("clear") || system("cls")) {
-    // limpa a tela, Linux, Mac e Windows
-  }
+ system("clear || cls");
 }
 
 
@@ -33,7 +32,8 @@ void grava_cliente(Cliente* cli) {
   }
   fwrite(cli, sizeof(Cliente), 1, fp);
   fclose(fp);
-  printf("Cliente gravado com sucesso!\n");
+  printf("Cliente salvo com sucesso!\n");
+  delay(3);
 }
 
 
