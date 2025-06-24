@@ -20,7 +20,7 @@ void modulo_cliente(void){
         break;
       case '3': atualizar_cliente();
         break;
-      case '4': excluir_cliente(cpf_busca);
+      case '4': excluir_cliente();
         break;
     }
   } while (opcao != '0');
@@ -171,12 +171,15 @@ void atualizar_cliente(void) {
 
 
 
-void excluir_cliente(char* cpf_busca) {
+void excluir_cliente(void) {
   FILE* fp = fopen("clientes.bin", "r+b");
   if (fp == NULL) {
     printf("Erro ao abrir o arquivo de clientes!\n");
     return;
   }
+
+  char cpf_busca[13];
+  ler_cpf(cpf_busca);
 
   Cliente cli;
   while (fread(&cli, sizeof(Cliente), 1, fp)) {
