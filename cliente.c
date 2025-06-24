@@ -57,13 +57,29 @@ void cadastro_cliente(void){
   printf("                               \n");
   ler_nome(cli->nome);
   ler_cpf(cli -> cpf);    
-  ler_fone(cli -> fone);
-  ler_email(cli -> email);
-  printf("                               \n");
-  printf("#============================# \n");   
-
-  grava_cliente(cli);
-  free(cli);
+  FILE* fp = fopen("clientes.bin", "rb");
+  if (fp != NULL) {
+    Cliente temp;
+    while (fread(&temp, sizeof(Cliente), 1, fp)) {
+      if (temp.status == 1 && strcmp(temp.cpf, cli->cpf) == 0) {
+        printf("\nJá existe um cliente com este CPF cadastrado.\n");
+        fclose(fp);
+        free(cli);
+        delay(2);
+        ler_nome(cli->nome);
+        ler_cpf(cli -> cpf);
+        return;
+      }
+    }
+    fclose(fp);
+    ler_fone(cli -> fone);
+    ler_email(cli -> email);
+    cli -> status = 1;
+    printf("                               \n");
+    printf("#============================# \n");   
+    grava_cliente(cli);
+    free(cli);
+  }
 }
 
 
@@ -74,24 +90,24 @@ Cliente* pesquisar_cliente(char* cpf_busca) {
     return NULL;
   }
   char cpf[13];
-  ler_cpf(cpf);
-  Cliente* cli = (Cliente*) malloc(sizeof(Cliente));
-  fread(cli, sizeof(Cliente), 1, fp);
   
+  Cliente* cli = (Cliente*) malloc(sizeof(Cliente));
   char opcao;
+  
   do {
-
-    if (cli != NULL) {
-      printf("\nCliente encontrado:\n");
-      printf("Nome: %s\n", cli->nome);
-      printf("CPF: %s\n", cli->cpf);
-      printf("Telefone: %s\n", cli->fone);
-      printf("Email: %s\n", cli->email);
-      free(cli);
-    } else {
-      printf("\nCliente não encontrado.\n");
+    ler_cpf(cpf);
+    rewind(fp);
+    while(fread(cli, sizeof(Cliente), 1, fp)){
+      if (cli->status == 1 && strcmp(cli->cpf, cpf) == 0) {
+        printf("\nCliente encontrado:\n");
+        printf("Nome: %s\n", cli->nome);
+        printf("CPF: %s\n", cli->cpf);
+        printf("Telefone: %s\n", cli->fone);
+        printf("Email: %s\n", cli->email);
+      } else {
+        printf("\nCliente não encontrado!\n");
+      }
     }
-
     printf("\nDeseja buscar outro cliente? (s/n): ");
     scanf(" %c", &opcao);
 
