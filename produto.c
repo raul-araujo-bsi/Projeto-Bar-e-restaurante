@@ -22,6 +22,8 @@ void modulo_produtos(void){
         break;
       case '4': excluir_produto();
         break;
+      case '5': relatorios_produtos();
+        break;
       }
   } while (opcao != '0');
 }
@@ -61,6 +63,7 @@ void cadastrar_produto(void) {
   ler_produto(prod -> produto);
   ler_quantidade(&prod -> quantidade);    
   ler_valor(&prod -> valor);
+  prod -> status = 1;
   printf("                               \n");
   printf("#============================# \n");   
 
@@ -70,30 +73,39 @@ void cadastrar_produto(void) {
 
 
 void pesquisar_produto(void) {
+  limpaTela();
+
   FILE *fp = fopen("produtos.bin", "rb");
-  Produto prod;
-  int id;
-
-  printf("Digite o ID do produto: ");
-  scanf("%d", &id);
-
   if (fp == NULL) {
-    printf("Arquivo não encontrado.\n");
+    printf("Sem produtos cadastrados.\n");
     return;
   }
 
-  while (fread(&prod, sizeof(Produto), 1, fp)) {
-    if (prod.id == id && prod.status == 1) {
-      printf("Fornecedor: %s\n", prod.fornecedor);
-      printf("Produto: %s\n", prod.produto);
-      printf("Quantidade: %d\n", prod.quantidade);
-      printf("Valor: %.2f\n", prod.valor);
-      fclose(fp);
-      return;
-    }
-  }
+  Produto prod;
+  int id;
+  char opcao;
 
-  printf("Produto não encontrado.\n");
+  do {
+    printf("Digite o ID do produto: ");
+    scanf("%d", &id);
+
+    rewind(fp);
+    while (fread(&prod, sizeof(Produto), 1, fp)) {
+      if (prod.id == id && prod.status == 1) {
+        printf("Fornecedor: %s\n", prod.fornecedor);
+        printf("Produto: %s\n", prod.produto);
+        printf("Quantidade: %d\n", prod.quantidade);
+        printf("Valor: %.2f\n", prod.valor);
+        break;
+      } else {
+        printf("\nProduto não encontrado!\n");
+        delay(3);
+      }
+    }
+    printf("Deseja pesquisar outro produto? (s/n)\n");
+    scanf(" %c", &opcao);
+  
+  } while (opcao == 's' || opcao == 'S');
   fclose(fp);
 }
 
@@ -154,6 +166,40 @@ void atualizar_produto(void) {
 
   fclose(fp);
 } //função desenvolvida com auxilio do ChatGPT
+
+
+void relatorios_produtos(void) {
+  limpaTela();
+
+  FILE *fp = fopen("produtos.bin", "rb");
+  if (fp == NULL) {
+    printf("Sem produtos cadastrados.\n");
+    delay(2);
+    return;
+  }
+
+  Produto prod;
+
+  printf("=== LISTA DE PRODUTOS CADASTRADOS ===\n\n");
+
+  while (fread(&prod, sizeof(Produto), 1, fp)) {
+    printf("\nID: %d\n", prod.id);
+    printf("Fornecedor: %s\n", prod.fornecedor);
+    printf("Produto: %s\n", prod.produto);
+    printf("Quantidade: %d\n", prod.quantidade);
+    printf("Valor: R$ %.2f\n", prod.valor);
+    if (prod.status == 1) {
+      printf("Status: Ativo\n");
+    } else {
+      printf("Status: Desativado\n");
+    }
+    printf("\n-----------------------------\n");
+    
+  }
+
+  fclose(fp);
+  getchar();
+}
 
 
 void excluir_produto(void) {

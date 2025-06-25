@@ -18,7 +18,9 @@ char tela_produtos(void);
 void cadastrar_produto(void);
 void pesquisar_produto(void);
 void atualizar_produto(void);
+void relatorios_produtos(void);
 void excluir_produto(void);
+
 void ler_fornecedor(char* );
 void ler_produto(char* );
 void ler_quantidade(int* quantidade);
