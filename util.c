@@ -54,11 +54,11 @@ int gera_id(void) {
     int id = 0;
 
     if (fp == NULL) {
-        fp = fopen("id_produto.bin", "wb+");
-        if (fp == NULL) {
-            printf("Erro ao criar o arquivo de ID!\n");
-            exit(1);
-        }
+      fp = fopen("id_produto.bin", "ab+");
+      if (fp == NULL) {
+        printf("Erro ao criar o arquivo de ID!\n");
+        exit(1);
+      }
     } else {
         fread(&id, sizeof(int), 1, fp);
     }
