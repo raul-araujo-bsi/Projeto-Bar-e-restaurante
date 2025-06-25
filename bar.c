@@ -23,7 +23,7 @@ int main (void) {
         break;
       case '2': modulo_pedido();
         break;
-      case '3': modulo_pedido();
+      case '3': modulo_produtos();
         break;
       case '4': //modulo_relatorios();
         break;
@@ -78,7 +78,7 @@ void saida(void) {
   printf("#============================# \n");
   printf("|                            | \n");
   printf("|    OBRIGADO PELA VISITA!   | \n");
-  printf("|       ATÉ A PRÓXIMA!       | \n");
+  printf("|       ATÉ A PROXIMA!       | \n");
   printf("|                            | \n");
   printf("#============================# \n");
 }
