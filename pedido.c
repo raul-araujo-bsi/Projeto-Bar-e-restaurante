@@ -1,6 +1,10 @@
+#include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include "pedido.h"
+#include "valida.h"
+#include "util.h"
+
 
 void modulo_pedido(void){
   system("cls||clear");
@@ -17,6 +21,10 @@ void modulo_pedido(void){
         break;
       case '4': cancelar_pedido();
         break;
+      case '5': pagamento();
+        break;
+      case '6': relatorio_pedidos();
+        break;
     }
   } while (opcao != '0');
 }
@@ -32,7 +40,8 @@ char tela_pedido(void){
     printf("| 2 - RESUMO DO PEDIDO       | \n");
     printf("| 3 - EDITAR PEDIDO          | \n");
     printf("| 4 - CANCELAR PEDIDO        | \n"); 
-    printf("| 5 - RELATÓRIO              | \n");
+    printf("| 5 - PAGAMENTO              | \n");
+    printf("| 6 - RELATÓRIO              | \n");
     printf("| 0 - SAIR                   | \n");
     printf("|                            | \n");
     printf("#============================# \n");
@@ -42,12 +51,18 @@ char tela_pedido(void){
 }
 
 
-void realizar_pedido(void) {
+void abrir_comanda(void) {
   system("cls||clear");
+
+  Comanda *cmd;
+  cmd = (Comanda*) malloc(sizeof(Comanda));
+
+  char id_cmd[15];
+
   printf("#============================# \n");
   printf("|           PEDIDO           | \n");
   printf("#============================# \n");
-  printf("   Id do pedido:               \n");
+  printf("   Id da comanda:              \n");
   printf("   Id do cliente:              \n");
   printf("   Mesa:                       \n");
   printf("   Id do produto:              \n");    
@@ -57,7 +72,7 @@ void realizar_pedido(void) {
 }
 
 
-void pesquisar_pedido(void) {
+void pesquisar_comanda(void) {
   system("cls||clear");
   printf("#===============================# \n");
   printf("|             PEDIDO            | \n");
@@ -73,7 +88,7 @@ void pesquisar_pedido(void) {
 }
 
 
-void atualizar_pedido(void){
+void atualizar_comanda(void){
   system("cls||clear");
   printf("#============================# \n");
   printf("|           PEDIDO           | \n");
@@ -87,7 +102,7 @@ void atualizar_pedido(void){
 }
 
 
-void cancelar_pedido(void) {
+void cancelar_comanda(void) {
   system("cls||clear");
   printf("#==========================================# \n");
   printf("|             CANCELAR PEDIDO              | \n");
