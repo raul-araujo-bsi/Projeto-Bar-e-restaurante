@@ -20,6 +20,7 @@ void pesquisar_produto(void);
 void atualizar_produto(void);
 void relatorios_produtos(void);
 void excluir_produto(void);
+void exibir_produto(Produto prod);
 
 void ler_fornecedor(char* );
 void ler_produto(char* );

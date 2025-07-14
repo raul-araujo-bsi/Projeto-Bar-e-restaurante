@@ -22,6 +22,7 @@ void modulo_cliente(void){
         break;
       case '4': excluir_cliente();
         break;
+      case '5': relatorios_clientes();
     }
   } while (opcao != '0');
 }
@@ -107,11 +108,8 @@ Cliente* pesquisar_cliente(char* cpf_busca) {
     rewind(fp);
     while(fread(cli, sizeof(Cliente), 1, fp)){
       if (cli->status == 1 && strcmp(cli->cpf, cpf) == 0) {
-        printf("\nCliente encontrado:\n");
-        printf("Nome: %s\n", cli->nome);
-        printf("CPF: %s\n", cli->cpf);
-        printf("Telefone: %s\n", cli->fone);
-        printf("Email: %s\n", cli->email);
+        exibir_cliente(*cli);
+        break;
       } else {
         printf("\nCliente não encontrado!\n");
       }
@@ -171,7 +169,6 @@ void atualizar_cliente(void) {
 }
 
 
-
 void excluir_cliente(void) {
   FILE* fp = fopen("clientes.bin", "r+b");
   if (fp == NULL) {
@@ -198,6 +195,41 @@ void excluir_cliente(void) {
   fclose(fp);
 }
 
+
+void relatorios_clientes(void) {
+  limpaTela();
+
+  FILE *fp = fopen("clientes.bin", "rb");
+  if (fp == NULL) {
+    printf("Sem clientes ativos.\n");
+    delay(2);
+    return;
+  }
+
+  Cliente cli;
+
+  printf("=== LISTA DE CLIENTES ATIVOS ===\n\n");
+
+  while (fread(&cli, sizeof(Cliente), 1, fp)) {
+    if (cli.status == 1) {
+      exibir_cliente(cli);
+      printf("Status: Ativo\n");
+      printf("\n-----------------------------\n");
+    }
+    
+  }
+
+  fclose(fp);
+  getchar();
+}
+
+
+void exibir_cliente(Cliente cli) {
+  printf("Nome: %s\n", cli.nome);
+  printf("CPF: %s\n", cli.cpf);
+  printf("Telefone: %s\n", cli.fone);
+  printf("Email: %s\n", cli.email);
+}
 
 
 void ler_nome(char*nome) {

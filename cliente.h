@@ -20,6 +20,8 @@ void cadastro_cliente(void);
 Cliente* pesquisar_cliente (char* cpf_busca);
 void atualizar_cliente(void);
 void excluir_cliente(void);
+void exibir_cliente(Cliente cli);
+void relatorios_clientes(void);
 
 #endif //sugestão do GPT
 

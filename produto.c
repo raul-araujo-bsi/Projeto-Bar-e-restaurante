@@ -92,10 +92,7 @@ void pesquisar_produto(void) {
     rewind(fp);
     while (fread(&prod, sizeof(Produto), 1, fp)) {
       if (prod.id == id && prod.status == 1) {
-        printf("Fornecedor: %s\n", prod.fornecedor);
-        printf("Produto: %s\n", prod.produto);
-        printf("Quantidade: %d\n", prod.quantidade);
-        printf("Valor: %.2f\n", prod.valor);
+        exibir_produto(prod);
         break;
       } else {
         printf("\nProduto não encontrado!\n");
@@ -183,11 +180,7 @@ void relatorios_produtos(void) {
   printf("=== LISTA DE PRODUTOS CADASTRADOS ===\n\n");
 
   while (fread(&prod, sizeof(Produto), 1, fp)) {
-    printf("\nID: %d\n", prod.id);
-    printf("Fornecedor: %s\n", prod.fornecedor);
-    printf("Produto: %s\n", prod.produto);
-    printf("Quantidade: %d\n", prod.quantidade);
-    printf("Valor: R$ %.2f\n", prod.valor);
+    exibir_produto(prod);
     if (prod.status == 1) {
       printf("Status: Ativo\n");
     } else {
@@ -246,6 +239,14 @@ void excluir_produto(void) {
   }
 
   fclose(fp);
+}
+
+
+void exibir_produto(Produto prod) {
+  printf("Fornecedor: %s\n", prod.fornecedor);
+  printf("Produto: %s\n", prod.produto);
+  printf("Quantidade: %d\n", prod.quantidade);
+  printf("Valor: %.2f\n", prod.valor);
 }
 
 
