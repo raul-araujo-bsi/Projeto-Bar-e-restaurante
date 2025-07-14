@@ -4,6 +4,7 @@
 #include <string.h>
 #include "cliente.h"
 #include "produto.h"
+#include "pedido.h";
 #include "util.h"
 
 void delay(int segundos) {
@@ -25,7 +26,7 @@ void limpaTela(void) {
 
 
 void grava_cliente(Cliente* cli) {
-  FILE* fp = fopen("clientes.bin", "ab");  // "ab" para acrescentar no final
+  FILE* fp = fopen("clientes.bin", "ab"); 
   if (fp == NULL) {
     printf("Erro ao abrir o arquivo de clientes!\n");
     return;
@@ -37,7 +38,6 @@ void grava_cliente(Cliente* cli) {
 }
 
 
-
 void grava_produto(Produto *prod) {
   FILE *fp = fopen("produtos.bin", "ab");
   if (fp == NULL) {
@@ -45,6 +45,28 @@ void grava_produto(Produto *prod) {
     return;
   }
   fwrite(prod, sizeof(Produto), 1, fp);
+  fclose(fp);
+}
+
+
+void grava_comanda(Comanda *cmd) {
+  FILE *fp = fopen("comandas.bin", "ab");
+  if (fp == NULL) {
+    printf("Erro ao abrir o arquivo.\n");
+    return;
+  }
+  fwrite(cmd, sizeof(Comanda), 1, fp);
+  fclose(fp);
+}
+
+
+void grava_pedido(Pedido *ped) {
+  FILE *fp = fopen("pedidos.bin", "ab");
+  if (fp == NULL) {
+    printf("Erro ao abrir o arquivo.\n");
+    return;
+  }
+  fwrite(ped, sizeof(Pedido), 1, fp);
   fclose(fp);
 }
 
@@ -70,3 +92,15 @@ int gera_id(void) {
 
     return id;
 }
+
+
+void gerar_id_comanda(char* buffer, int tamanho) {
+  time_t agora;
+  struct tm *infoTempo;
+
+  time(&agora);                        // Captura o tempo atual do sistema
+  infoTempo = localtime(&agora);      // Converte para struct de data/hora local
+
+  strftime(buffer, tamanho, "%Y%m%d%H%M%S", infoTempo);  
+} //FUNÇÃO GERADA PELO CHATGPT
+

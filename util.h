@@ -1,8 +1,12 @@
 #include "cliente.h"
 #include "produto.h"
+#include "pedido.h"
 
 void limpaTela(void);
 void delay(int segundos);
 void grava_cliente(Cliente* cli);
 void grava_produto(Produto* prod);
+void grava_comanda(Comanda* cmd);
+void grava_pedido(Pedido* ped);
 int gera_id(void);
+void gerar_id_comanda(char* buffer, int tamanho);
