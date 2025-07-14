@@ -274,12 +274,10 @@ void ler_produto(char* produto){
 }
 
 
-void ler_quantidade(int* quantidade){
-  char qntd[5];
+void ler_quantidade(int* qntd){
   printf("Digite a quantidade: ");
-  fgets(qntd, sizeof(qntd), stdin);
-  qntd[strcspn(qntd, "\n")] = '\0';
-  *quantidade = atoi(qntd);
+  scanf("%d", qntd);
+  getchar();
 }
 
 
