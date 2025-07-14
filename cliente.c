@@ -36,7 +36,8 @@ char tela_cliente(void){
   printf("|  1 - CADASTRO              | \n");
   printf("|  2 - PESQUISAR             | \n");
   printf("|  3 - ALTERAR               | \n");
-  printf("|  4 - EXCLUIR               | \n");    
+  printf("|  4 - EXCLUIR               | \n"); 
+  printf("|  5 - RELATÓRIO             | \n");   
   printf("|  0 - RETORNAR              | \n");
   printf("|                            | \n");
   printf("#============================# \n");

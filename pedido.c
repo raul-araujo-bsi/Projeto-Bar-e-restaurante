@@ -31,7 +31,8 @@ char tela_pedido(void){
     printf("| 1 - REALIZAR PEDIDO        | \n");
     printf("| 2 - RESUMO DO PEDIDO       | \n");
     printf("| 3 - EDITAR PEDIDO          | \n");
-    printf("| 4 - CANCELAR PEDIDO        | \n");
+    printf("| 4 - CANCELAR PEDIDO        | \n"); 
+    printf("| 5 - RELATÓRIO              | \n");
     printf("| 0 - SAIR                   | \n");
     printf("|                            | \n");
     printf("#============================# \n");

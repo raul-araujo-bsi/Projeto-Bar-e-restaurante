@@ -25,9 +25,7 @@ int main (void) {
         break;
       case '3': modulo_produtos();
         break;
-      case '4': //modulo_relatorios();
-        break;
-      case '5': sobre();
+      case '4': sobre();
         break;
     }
   } while (opcao != '0');
