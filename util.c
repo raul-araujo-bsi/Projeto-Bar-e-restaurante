@@ -121,7 +121,7 @@ char* buscar_nome(char* cpf_alvo, char* nome, int tamanho) {
   Cliente cliente;
 
   if (fp == NULL) {
-    printf("Erro ao abrir o arquivo de clientes.\n");
+    printf("Erro ao abrir o arquivo de clientes!\n");
     return NULL;
   }
 
@@ -136,4 +136,43 @@ char* buscar_nome(char* cpf_alvo, char* nome, int tamanho) {
 
   fclose(fp);
   return NULL;
+}
+
+
+float calcular_total_pedidos(const char* cpf_alvo) {
+  FILE* fp = fopen("pedidos.dat", "rb");
+  Pedido ped;
+  float total = 0;
+
+  if (!fp) return 0;
+
+  while (fread(&ped, sizeof(Pedido), 1, fp)) {
+    if (strcmp(ped.cpf, cpf_alvo) == 0) {
+        total += ped.valor;
+    }
+  }
+
+  fclose(fp);
+  return total;
+}
+
+
+float calcula_valor(int id_produto, int quantidade) {
+  FILE* fp = fopen("produtos.dat", "rb");
+  Produto prod;
+
+  if (fp == NULL) {
+    printf("Erro ao abrir o arquivo produtos.dat\n");
+    return -1.0;
+  }
+
+  while (fread(&prod, sizeof(Produto), 1, fp)) {
+    if (prod.id == id_produto && prod.status == 1) {
+        fclose(fp);
+        return quantidade * prod.valor;
+    }
+  }
+
+  fclose(fp);
+  return -1.0;
 }

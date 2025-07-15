@@ -11,3 +11,6 @@ void grava_pedido(Pedido* ped);
 void gravar_horario(char* hora, int tamanho);
 int gera_id(void);
 void gerar_id_comanda(char* buffer, int tamanho);
+char* buscar_nome(char* cpf_alvo, char* nome, int tamanho);
+float calcular_total_pedidos(const char* cpf_alvo);
+float calcula_valor(int id_produto, int quantidade);
