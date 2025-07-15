@@ -13,17 +13,17 @@ void modulo_pedido(void){
   do {
     opcao = tela_pedido();
     switch(opcao){
-      case '1': realizar_pedido();
+      case '1': abrir_comanda();
         break;
-      case '2': pesquisar_pedido();
+      case '2': pesquisar_comanda();
         break;
-      case '3': atualizar_pedido();
+      case '3': atualizar_comanda();
         break;
-      case '4': cancelar_pedido();
+      case '4': cancelar_comanda();
         break;
-      case '5': pagamento();
+      //case '5': pagamento();
         break;
-      case '6': relatorio_pedidos();
+      //case '6': relatorio_pedidos();
         break;
     }
   } while (opcao != '0');
@@ -57,16 +57,14 @@ void abrir_comanda(void) {
   Comanda *cmd;
   cmd = (Comanda*) malloc(sizeof(Comanda));
 
-  char id_cmd[15];
 
   printf("#============================# \n");
-  printf("|           PEDIDO           | \n");
+  printf("|           COMANDA          | \n");
   printf("#============================# \n");
-  printf("   Id da comanda:              \n");
-  printf("   Id do cliente:              \n");
-  printf("   Mesa:                       \n");
-  printf("   Id do produto:              \n");    
-  printf("   Quantidade:                 \n");
+  gerar_id_comanda(cmd->id_cmd, sizeof(cmd->id_cmd));
+  ler_mesa(&cmd -> mesa);
+  ler_cpf(cmd -> cpf);
+  exibe_valor(cmd->valor);
   printf("#============================# \n");
   getchar();
 }
@@ -111,4 +109,16 @@ void cancelar_comanda(void) {
   printf("                                             \n");
   printf("#==========================================# \n");    
   getchar();
+}
+
+
+void ler_mesa(int* mesa){
+  printf("Digite o número da mesa: ");
+  scanf("%d", mesa);
+  getchar();
+}
+
+
+void exibe_valor(float valor){
+  printf("Valor total: %.2f \n", valor);
 }

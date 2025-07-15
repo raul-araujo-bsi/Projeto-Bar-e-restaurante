@@ -4,7 +4,7 @@
 #include <string.h>
 #include "cliente.h"
 #include "produto.h"
-#include "pedido.h";
+#include "pedido.h"
 #include "util.h"
 
 void delay(int segundos) {
