@@ -97,7 +97,5 @@ int valida_prod (int *id){
       return *id;
     }
   }
-  printf("\nProduto não encontrado!\n");
-  delay(3);
   return 0;
 }
