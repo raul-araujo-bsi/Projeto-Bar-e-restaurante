@@ -71,6 +71,17 @@ void grava_pedido(Pedido *ped) {
 }
 
 
+void gravar_horario(char* hora, int tamanho) {
+  time_t agora;
+  struct tm *infoTempo;
+
+  time(&agora);                    // obtém o tempo atual
+  infoTempo = localtime(&agora);  // converte para tempo local
+
+  strftime(hora, tamanho, "%H:%M", infoTempo);  // formato: HH:MM (24h)
+} //gerada pelo GPT
+
+
 int gera_id(void) {
     FILE *fp = fopen("id_produto.bin", "rb+");
     int id = 0;

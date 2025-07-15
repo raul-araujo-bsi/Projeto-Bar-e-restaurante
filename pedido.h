@@ -6,10 +6,10 @@ typedef struct ped Pedido;
 
 struct ped
 {
+  char cpf[13];
   int mesa;
   int id_produto;
   int quantidade;
-  char data[11];
   char hora[6];
   int status;
 };
@@ -32,6 +32,8 @@ void atualizar_comanda(void);
 void cancelar_comanda(void);
 void ler_mesa(int* mesa);
 void exibe_valor(float valor);
+char cria_pedido(void);
+void faz_pedido(void);
 
 
 #endif //sugestão do GPT

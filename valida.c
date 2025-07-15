@@ -1,7 +1,9 @@
-#include "valida.h"
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
+#include "produto.h"
+#include "valida.h"
+#include "util.h"
 
 int valida_nome (char *nome){
   int i;
@@ -76,5 +78,26 @@ int valida_email (char *email){
   if (arroba == 1 && ponto >= 1) {
     return 1;
   }
+  return 0;
+}
+
+
+int valida_prod (int *id){
+  FILE *fp = fopen("produtos.bin", "rb");
+  
+  Produto prod;
+
+  printf("Digite o ID do produto: ");
+  scanf("%d", id);
+  getchar();
+  
+  rewind(fp);
+  while (fread(&prod, sizeof(Produto), 1, fp)) {
+    if (prod.id == *id && prod.status == 1) {
+      return *id;
+    }
+  }
+  printf("\nProduto não encontrado!\n");
+  delay(3);
   return 0;
 }

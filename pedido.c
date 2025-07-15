@@ -1,6 +1,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include<ctype.h>
 #include "pedido.h"
 #include "valida.h"
 #include "util.h"
@@ -36,9 +37,9 @@ char tela_pedido(void){
     printf("#============================# \n");
     printf("|          PEDIDOS           | \n");
     printf("|                            | \n");
-    printf("| 1 - REALIZAR PEDIDO        | \n");
-    printf("| 2 - RESUMO DO PEDIDO       | \n");
-    printf("| 3 - EDITAR PEDIDO          | \n");
+    printf("| 1 - ABRIR COMANDA          | \n");
+    printf("| 2 - PESQUISAR COMANDA      | \n");
+    printf("| 3 - EDITAR COMANDA         | \n");
     printf("| 4 - CANCELAR PEDIDO        | \n"); 
     printf("| 5 - PAGAMENTO              | \n");
     printf("| 6 - RELATÓRIO              | \n");
@@ -62,11 +63,20 @@ void abrir_comanda(void) {
   printf("|           COMANDA          | \n");
   printf("#============================# \n");
   gerar_id_comanda(cmd->id_cmd, sizeof(cmd->id_cmd));
+  cmd -> status = 1;
   ler_mesa(&cmd -> mesa);
   ler_cpf(cmd -> cpf);
   exibe_valor(cmd->valor);
   printf("#============================# \n");
   getchar();
+  grava_comanda(cmd);
+  free(cmd);
+
+  char op_ped;
+  do {
+    faz_pedido();
+    op_ped = cria_pedido();
+  } while (toupper(op_ped) != 'N');
 }
 
 
@@ -121,4 +131,33 @@ void ler_mesa(int* mesa){
 
 void exibe_valor(float valor){
   printf("Valor total: %.2f \n", valor);
+}
+
+
+char cria_pedido(void){
+  char op;
+  printf("Deseja fazer um novo pedido (S/N)? ");
+  scanf(" %c", &op);
+  getchar();
+  return op;
+}
+
+
+void faz_pedido(void){
+  system("cls||clear");
+
+  Pedido *ped;
+  ped = (Pedido*) malloc(sizeof(Pedido));
+
+  printf("#============================# \n");
+  printf("|           PEDIDO           | \n");
+  printf("#============================# \n");
+  ler_cpf(ped -> cpf);
+  ler_mesa(&ped -> mesa);
+  valida_prod(&ped -> id_produto);
+  ler_quantidade(&ped -> quantidade);
+  gravar_horario(ped -> hora, sizeof(ped -> hora));
+  ped -> status = 1;
+  grava_pedido(ped);
+  free(ped);
 }
