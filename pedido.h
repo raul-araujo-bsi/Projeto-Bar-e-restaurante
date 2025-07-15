@@ -10,6 +10,7 @@ struct ped
   int mesa;
   int id_produto;
   int quantidade;
+  float valor;
   char hora[6];
   int status;
 };

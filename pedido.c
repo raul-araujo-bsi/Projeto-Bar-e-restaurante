@@ -147,6 +147,7 @@ void faz_pedido(void){
   system("cls||clear");
 
   Pedido *ped;
+  float valor = calcula_valor(ped->id_produto, ped->quantidade);
   ped = (Pedido*) malloc(sizeof(Pedido));
 
   printf("#============================# \n");
@@ -156,6 +157,7 @@ void faz_pedido(void){
   ler_mesa(&ped -> mesa);
   valida_prod(&ped -> id_produto);
   ler_quantidade(&ped -> quantidade);
+  ped -> valor = valor;
   gravar_horario(ped -> hora, sizeof(ped -> hora));
   ped -> status = 1;
   grava_pedido(ped);
