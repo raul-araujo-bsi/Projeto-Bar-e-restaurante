@@ -94,10 +94,9 @@ void pesquisar_produto(void) {
       if (prod.id == id && prod.status == 1) {
         exibir_produto(prod);
         break;
-      } else {
-        printf("\nProduto não encontrado!\n");
-        delay(3);
       }
+      printf("\nProduto não encontrado!\n");
+      delay(3);
     }
     printf("Deseja pesquisar outro produto? (s/n)\n");
     scanf(" %c", &opcao);
