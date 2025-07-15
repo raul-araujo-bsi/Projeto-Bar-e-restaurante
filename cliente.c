@@ -64,7 +64,7 @@ void cadastro_cliente(void){
   ler_nome(cli->nome);
   ler_cpf(cli -> cpf);    
 
-  FILE* fp = fopen("clientes.bin", "ab+");
+  FILE* fp = fopen("clientes.dat", "ab+");
   if (fp != NULL) {
     Cliente temp;
     while (fread(&temp, sizeof(Cliente), 1, fp)) {
@@ -93,7 +93,7 @@ void cadastro_cliente(void){
 Cliente* pesquisar_cliente(char* cpf_busca) {
   limpaTela();
 
-  FILE* fp = fopen("clientes.bin", "rb");
+  FILE* fp = fopen("clientes.dat", "rb");
   if (fp == NULL) {
     printf("Sem clientes cadastrados.\n");
     return NULL;
@@ -124,7 +124,7 @@ Cliente* pesquisar_cliente(char* cpf_busca) {
 
 void atualizar_cliente(void) {
   limpaTela();
-  FILE* fp = fopen("clientes.bin", "r+b");
+  FILE* fp = fopen("clientes.dat", "r+b");
   if (fp == NULL) {
     printf("Erro ao abrir o arquivo de clientes!\n");
     return;
@@ -170,7 +170,7 @@ void atualizar_cliente(void) {
 
 
 void excluir_cliente(void) {
-  FILE* fp = fopen("clientes.bin", "r+b");
+  FILE* fp = fopen("clientes.dat", "r+b");
   if (fp == NULL) {
     printf("Erro ao abrir o arquivo de clientes!\n");
     return;
@@ -199,7 +199,7 @@ void excluir_cliente(void) {
 void relatorios_clientes(void) {
   limpaTela();
 
-  FILE *fp = fopen("clientes.bin", "rb");
+  FILE *fp = fopen("clientes.dat", "rb");
   if (fp == NULL) {
     printf("Sem clientes ativos.\n");
     delay(2);

@@ -26,7 +26,7 @@ void limpaTela(void) {
 
 
 void grava_cliente(Cliente* cli) {
-  FILE* fp = fopen("clientes.bin", "ab"); 
+  FILE* fp = fopen("clientes.dat", "ab"); 
   if (fp == NULL) {
     printf("Erro ao abrir o arquivo de clientes!\n");
     return;
@@ -39,7 +39,7 @@ void grava_cliente(Cliente* cli) {
 
 
 void grava_produto(Produto *prod) {
-  FILE *fp = fopen("produtos.bin", "ab");
+  FILE *fp = fopen("produtos.dat", "ab");
   if (fp == NULL) {
     printf("Erro ao abrir o arquivo.\n");
     return;
@@ -50,7 +50,7 @@ void grava_produto(Produto *prod) {
 
 
 void grava_comanda(Comanda *cmd) {
-  FILE *fp = fopen("comandas.bin", "ab");
+  FILE *fp = fopen("comandas.dat", "ab");
   if (fp == NULL) {
     printf("Erro ao abrir o arquivo.\n");
     return;
@@ -61,7 +61,7 @@ void grava_comanda(Comanda *cmd) {
 
 
 void grava_pedido(Pedido *ped) {
-  FILE *fp = fopen("pedidos.bin", "ab");
+  FILE *fp = fopen("pedidos.dat", "ab");
   if (fp == NULL) {
     printf("Erro ao abrir o arquivo.\n");
     return;
@@ -83,11 +83,11 @@ void gravar_horario(char* hora, int tamanho) {
 
 
 int gera_id(void) {
-    FILE *fp = fopen("id_produto.bin", "rb+");
+    FILE *fp = fopen("id_produto.dat", "rb+");
     int id = 0;
 
     if (fp == NULL) {
-      fp = fopen("id_produto.bin", "ab+");
+      fp = fopen("id_produto.dat", "ab+");
       if (fp == NULL) {
         printf("Erro ao criar o arquivo de ID!\n");
         exit(1);
@@ -115,3 +115,25 @@ void gerar_id_comanda(char* buffer, int tamanho) {
   strftime(buffer, tamanho, "%Y%m%d%H%M%S", infoTempo);  
 } //FUNÇÃO GERADA PELO CHATGPT
 
+
+char* buscar_nome(char* cpf_alvo, char* nome, int tamanho) {
+  FILE* fp = fopen("clientes.dat", "rb");
+  Cliente cliente;
+
+  if (fp == NULL) {
+    printf("Erro ao abrir o arquivo de clientes.\n");
+    return NULL;
+  }
+
+  while (fread(&cliente, sizeof(Cliente), 1, fp)) {
+    if (strcmp(cliente.cpf, cpf_alvo) == 0) {
+      strncpy(nome, cliente.nome, tamanho);
+      nome[tamanho - 1] = '\0';
+      fclose(fp);
+      return nome;
+    }
+  }
+
+  fclose(fp);
+  return NULL;
+}

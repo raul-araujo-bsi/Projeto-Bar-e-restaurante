@@ -83,7 +83,7 @@ int valida_email (char *email){
 
 
 int valida_prod (int *id){
-  FILE *fp = fopen("produtos.bin", "rb");
+  FILE *fp = fopen("produtos.dat", "rb");
   
   Produto prod;
 

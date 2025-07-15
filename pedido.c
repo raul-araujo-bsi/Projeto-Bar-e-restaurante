@@ -1,7 +1,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include<ctype.h>
+#include <ctype.h>
 #include "pedido.h"
 #include "valida.h"
 #include "util.h"

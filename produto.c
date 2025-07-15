@@ -75,7 +75,7 @@ void cadastrar_produto(void) {
 void pesquisar_produto(void) {
   limpaTela();
 
-  FILE *fp = fopen("produtos.bin", "rb");
+  FILE *fp = fopen("produtos.dat", "rb");
   if (fp == NULL) {
     printf("Sem produtos cadastrados.\n");
     return;
@@ -107,7 +107,7 @@ void pesquisar_produto(void) {
 
 
 void atualizar_produto(void) {
-  FILE *fp = fopen("produtos.bin", "r+b");
+  FILE *fp = fopen("produtos.dat", "r+b");
   if (!fp) {
       printf("Erro ao abrir arquivo de produtos.\n");
       return;
@@ -167,7 +167,7 @@ void atualizar_produto(void) {
 void relatorios_produtos(void) {
   limpaTela();
 
-  FILE *fp = fopen("produtos.bin", "rb");
+  FILE *fp = fopen("produtos.dat", "rb");
   if (fp == NULL) {
     printf("Sem produtos cadastrados.\n");
     delay(2);
@@ -195,7 +195,7 @@ void relatorios_produtos(void) {
 
 
 void excluir_produto(void) {
-  FILE *fp = fopen("produtos.bin", "r+b");
+  FILE *fp = fopen("produtos.dat", "r+b");
   if (!fp) {
     printf("Erro ao abrir arquivo de produtos.\n");
     return;
