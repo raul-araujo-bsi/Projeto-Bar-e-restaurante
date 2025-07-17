@@ -187,7 +187,9 @@ void faz_pedido(void){
     gravar_horario(ped -> hora, sizeof(ped -> hora));
     ped -> status = 1;
     grava_pedido(ped);
-    cria_pedido();
+    printf("Deseja adicionar mais produtos a esse pedido (S/N)? \n");
+    scanf(" %s", &novo_pedido);
+    getchar();
   } while(toupper(novo_pedido) == 'S');
   free(ped);
 }
