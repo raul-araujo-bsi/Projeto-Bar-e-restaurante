@@ -179,6 +179,7 @@ void faz_pedido(void){
   ler_cpf(ped -> cpf);
   ler_mesa(&ped -> mesa);
   do{
+    limpaTela();
     valida_prod(&ped -> id_produto);
     ler_quantidade(&ped -> quantidade);
     float valor = calcula_valor(ped->id_produto, ped->quantidade);
@@ -186,9 +187,7 @@ void faz_pedido(void){
     gravar_horario(ped -> hora, sizeof(ped -> hora));
     ped -> status = 1;
     grava_pedido(ped);
-    printf("Deseja adicionar mais produtos a esse pedido (S/N)? \n");
-    scanf(" %s", &novo_pedido);
-    getchar();
+    cria_pedido();
   } while(toupper(novo_pedido) == 'S');
   free(ped);
 }
@@ -299,7 +298,8 @@ void exibe_pedido(void){
 
 
 void comandas_ativas(void){
-  
+  limpaTela();
+
   FILE* fp = fopen("comandas.dat", "rb");
   if (fp == NULL) {
     printf("Arquivo 'comandas.dat' não encontrado.\n");
@@ -344,6 +344,7 @@ void comandas_ativas(void){
 
 
 void comandas_pagas(void){
+  limpaTela();
   
   FILE* fp = fopen("comandas.dat", "rb");
   if (fp == NULL) {
@@ -396,6 +397,8 @@ int comparar_horario(const void *a, const void *b) {
 
 
 void ordem_pedidos(void){
+limpaTela();
+
   FILE *fp = fopen("pedidos.dat", "rb");
   if (!fp) {
     printf("Erro ao abrir o arquivo de pedidos.\n");
