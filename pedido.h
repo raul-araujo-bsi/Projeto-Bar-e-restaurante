@@ -29,12 +29,12 @@ char tela_pedido(void);
 void abrir_comanda(void);
 void pesquisar_comanda(void);
 void realizar_pedido(void);
-void cancelar_comanda(void);
+void finalizar_comanda(void);
 void ler_mesa(int* mesa);
 float exibe_valor(float valor);
 char cria_pedido(void);
 void faz_pedido(void);
-void exibe_comanda(void);
+void exibe_comanda(const char* cpf);
 void exibe_pedido(void);
 
 void comandas_ativas(void);

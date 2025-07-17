@@ -116,7 +116,7 @@ void gerar_id_comanda(char* buffer, int tamanho) {
 } //FUNÇÃO GERADA PELO CHATGPT
 
 
-char* buscar_nome(char* cpf_alvo, char* nome, int tamanho) {
+char* buscar_nome(const char* cpf_alvo, char* nome, int tamanho) {
   FILE* fp = fopen("clientes.dat", "rb");
   Cliente cliente;
 
@@ -139,7 +139,7 @@ char* buscar_nome(char* cpf_alvo, char* nome, int tamanho) {
 }
 
 
-float calcular_total(char* cpf) {
+float calcular_total(const char* cpf) {
   FILE* fp_ped = fopen("pedidos.dat", "rb");
   Pedido ped;
   float total = 0;

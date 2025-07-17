@@ -20,11 +20,9 @@ void modulo_pedido(void){
         break;
       case '3': realizar_pedido();
         break;
-      case '4': cancelar_comanda();
+      case '4': finalizar_comanda();
         break;
-      //case '5': pagamento();
-        break;
-      //case '6': relatorio_pedidos();
+      case '5': relatorios_pedidos();
         break;
     }
   } while (opcao != '0');
@@ -40,8 +38,8 @@ char tela_pedido(void){
     printf("| 1 - ABRIR COMANDA          | \n");
     printf("| 2 - PESQUISAR COMANDA      | \n");
     printf("| 3 - REALIZAR PEDIDO        | \n"); 
-    printf("| 5 - PAGAMENTO              | \n");
-    printf("| 6 - RELATÓRIO              | \n");
+    printf("| 4 - PAGAMENTO              | \n");
+    printf("| 5 - RELATÓRIO              | \n");
     printf("| 0 - SAIR                   | \n");
     printf("|                            | \n");
     printf("#============================# \n");
@@ -79,8 +77,9 @@ void abrir_comanda(void) {
 
 
 void pesquisar_comanda(void) {
-
-  exibe_comanda();
+  char cpf[13];
+  ler_cpf(cpf);
+  exibe_comanda(cpf);
 }
 
 
@@ -89,17 +88,50 @@ void realizar_pedido(void){
 }
 
 
-void cancelar_comanda(void) {
-  system("cls||clear");
-  printf("#==========================================# \n");
-  printf("|             CANCELAR PEDIDO              | \n");
-  printf("#==========================================# \n");
-  printf(" Informe o Id do pedido a ser cancelado:     \n");
-  printf("                                             \n");
-  printf("#==========================================# \n");    
-  getchar();
+void finalizar_comanda(void) {
+  FILE *fp_cmd = fopen("comandas.dat", "r+b");
+  FILE *fp_ped = fopen("pedidos.dat", "r+b");
+  if (!fp_cmd || !fp_ped) {
+    printf("Erro ao abrir arquivos.\n");
+    return;
+  }
 
-  exibe_pedido();
+  Comanda cmd;
+  Pedido ped;
+  char cpf[13];
+  char pag;
+  limpaTela();
+  ler_cpf(cpf);
+  exibe_comanda(cpf);
+  while (fread(&cmd, sizeof(Comanda), 1, fp_cmd)) {
+    if (strcmp(cmd.cpf, cpf) == 0 && cmd.status == 1) {
+
+      printf("Informe o modo de pagamento: \n");
+      printf("1 - DINHEIRO \t 2 - PIX\n");
+      printf("3 - CREDITO  \t 4-DEBITO\n");
+      scanf(" %c", &pag);
+      getchar();
+      
+      cmd.status = 0;
+      fseek(fp_cmd, -sizeof(Comanda), SEEK_CUR);
+      fwrite(&cmd, sizeof(Comanda), 1, fp_cmd);
+      printf("Pagamento efetuado com sucesso!\n");
+
+
+      rewind(fp_ped);
+      while (fread(&ped, sizeof(Pedido), 1, fp_ped)) {
+        if (strcmp(ped.cpf, cpf) == 0 && ped.status == 1) {
+          ped.status = 0;
+          fseek(fp_ped, -sizeof(Pedido), SEEK_CUR);
+          fwrite(&ped, sizeof(Pedido), 1, fp_ped);
+        }
+      }
+
+      fclose(fp_cmd);
+      fclose(fp_ped);
+      break;
+    }
+  }
 }
 
 
@@ -161,7 +193,7 @@ void faz_pedido(void){
 }
 
 
-void exibe_comanda(void) {
+void exibe_comanda(const char* cpf) {
   limpaTela();
 
   FILE *fp = fopen("comandas.dat", "rb");
@@ -172,11 +204,8 @@ void exibe_comanda(void) {
   
   Comanda cmd;
   char nome[50];
-  char cpf[13];
   float valor_total;
   int encontrada = 0; //sugestão GPT
-  
-  ler_cpf(cpf);
   
   while (fread(&cmd, sizeof(Comanda), 1, fp)) {
     if (strcmp(cmd.cpf, cpf) == 0 && cmd.status == 1) {
@@ -274,4 +303,9 @@ void comandas_ativas(void){
   printf("\n#-----------------------------------#\n");
   printf("Pressione ENTER para continuar...");
   getchar();
+}
+
+
+void relatorios_comandas (void){
+
 }
