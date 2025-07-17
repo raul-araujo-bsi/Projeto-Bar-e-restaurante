@@ -22,7 +22,7 @@ void modulo_pedido(void){
         break;
       case '4': finalizar_comanda();
         break;
-      case '5': relatorios_pedidos();
+      case '5': relatorios();
         break;
     }
   } while (opcao != '0');
@@ -52,27 +52,21 @@ char tela_pedido(void){
 void abrir_comanda(void) {
   system("cls||clear");
 
-  
-  char op_ped;
-  do {
-    Comanda *cmd;
-    cmd = (Comanda*) malloc(sizeof(Comanda));
-  
-  
-    printf("#============================# \n");
-    printf("|           COMANDA          | \n");
-    printf("#============================# \n");
-    gerar_id_comanda(cmd->id_cmd, sizeof(cmd->id_cmd));
-    cmd -> status = 1;
-    cmd -> valor = calcular_total(cmd -> cpf);
-    ler_cpf(cmd -> cpf);
-    printf("#============================# \n");
-    getchar();
-    grava_comanda(cmd);
-    free(cmd);
-    faz_pedido();
-    op_ped = cria_pedido();
-  } while (toupper(op_ped) != 'N');
+  Comanda *cmd;
+  cmd = (Comanda*) malloc(sizeof(Comanda));
+
+
+  printf("#============================# \n");
+  printf("|           COMANDA          | \n");
+  printf("#============================# \n");
+  gerar_id_comanda(cmd->id_cmd, sizeof(cmd->id_cmd));
+  cmd -> status = 1;
+  cmd -> valor = calcular_total(cmd -> cpf);
+  ler_cpf(cmd -> cpf);
+  printf("#============================# \n");
+  getchar();
+  grava_comanda(cmd);
+  free(cmd);
 }
 
 
@@ -176,19 +170,26 @@ void faz_pedido(void){
 
   Pedido *ped;
   ped = (Pedido*) malloc(sizeof(Pedido));
+
+  char novo_pedido;
   
   printf("#============================# \n");
   printf("|           PEDIDO           | \n");
   printf("#============================# \n");
   ler_cpf(ped -> cpf);
   ler_mesa(&ped -> mesa);
-  valida_prod(&ped -> id_produto);
-  ler_quantidade(&ped -> quantidade);
-  float valor = calcula_valor(ped->id_produto, ped->quantidade);
-  ped -> valor = valor;
-  gravar_horario(ped -> hora, sizeof(ped -> hora));
-  ped -> status = 1;
-  grava_pedido(ped);
+  do{
+    valida_prod(&ped -> id_produto);
+    ler_quantidade(&ped -> quantidade);
+    float valor = calcula_valor(ped->id_produto, ped->quantidade);
+    ped -> valor = valor;
+    gravar_horario(ped -> hora, sizeof(ped -> hora));
+    ped -> status = 1;
+    grava_pedido(ped);
+    printf("Deseja adicionar mais produtos a esse pedido (S/N)? \n");
+    scanf(" %s", &novo_pedido);
+    getchar();
+  } while(toupper(novo_pedido) == 'S');
   free(ped);
 }
 
@@ -238,6 +239,35 @@ void exibe_comanda(const char* cpf) {
 }
 
 
+void pedidos_ativos(void){
+  limpaTela();
+
+  FILE *fp = fopen("pedidos.dat", "rb");
+  if (fp == NULL) {
+  printf("Sem pedidos cadastrados.\n");
+  return;
+  }
+  Pedido ped;
+  char cpf[13];
+
+  ler_cpf(cpf);
+
+  while (fread(&ped, sizeof(Pedido), 1, fp)) {
+    if (strcmp(ped.cpf, cpf) == 0 && ped.status == 1){
+      printf("\n\nCPF: %s\n", ped.cpf);
+      printf("Mesa: %d\n", ped.mesa);
+      printf("Id. Produto: %d\n",ped.id_produto );
+      printf("Quantidade: %d\n", ped.quantidade);
+      printf("Hora do pedido: %s\n", ped.hora);
+      printf("Valor: %.2f\n", ped.valor);
+    }
+  }
+
+  printf("Pressione ENTER para continuar...");
+  getchar();
+}
+
+
 void exibe_pedido(void){
   limpaTela();
 
@@ -247,16 +277,24 @@ void exibe_pedido(void){
   return;
   }
   Pedido ped;
+  char cpf[13];
+
+  ler_cpf(cpf);
 
   while (fread(&ped, sizeof(Pedido), 1, fp)) {
-    printf("CPF: %s\n", ped.cpf);
-    printf("Mesa: %d\n", ped.mesa);
-    printf("Id. Produto: %d\n",ped.id_produto );
-    printf("Quantidade: %d\n", ped.quantidade);
-    printf("Hora do pedido: %s\n", ped.hora);
-    printf("Valor: %.2f\n", ped.valor);
+    if (strcmp(ped.cpf, cpf) == 0){
+      printf("\n\nCPF: %s\n", ped.cpf);
+      printf("Mesa: %d\n", ped.mesa);
+      printf("Id. Produto: %d\n",ped.id_produto );
+      printf("Quantidade: %d\n", ped.quantidade);
+      printf("Hora do pedido: %s\n", ped.hora);
+      printf("Valor: %.2f\n", ped.valor);
+    }
   }
-  delay(5);
+  fclose(fp);
+
+  printf("Pressione ENTER para continuar...");
+  getchar();
 }
 
 
@@ -285,12 +323,11 @@ void comandas_ativas(void){
 
       valor_total = calcular_total(cmd.cpf);
 
-      printf("\n#-----------------------------------#\n");
+      printf("\n\n#-----------------------------------#\n");
       printf("ID da Comanda : %s\n", cmd.id_cmd);
       printf("CPF do Cliente: %s\n", cmd.cpf);
       printf("Nome do Cliente: %s\n", nome);
       printf("Valor Total    : R$ %.2f\n", valor_total);
-      printf("Status         : %d\n", cmd.status);
     }
   }
 
@@ -306,6 +343,141 @@ void comandas_ativas(void){
 }
 
 
-void relatorios_comandas (void){
+void comandas_pagas(void){
+  
+  FILE* fp = fopen("comandas.dat", "rb");
+  if (fp == NULL) {
+    printf("Arquivo 'comandas.dat' não encontrado.\n");
+    return;
+  }
 
+  Comanda cmd;
+  char nome[50];
+  float valor_total;
+  int encontrou = 0;
+
+  printf("\n#========= COMANDAS ATIVAS =========#\n");
+
+  while (fread(&cmd, sizeof(Comanda), 1, fp)) {
+    if (cmd.status == 0) {
+      encontrou = 1;
+
+      if (buscar_nome(cmd.cpf, nome, sizeof(nome)) == NULL) {
+        strcpy(nome, "Cliente não encontrado");
+      }
+
+      valor_total = calcular_total(cmd.cpf);
+
+      printf("\n\n#-----------------------------------#\n");
+      printf("ID da Comanda : %s\n", cmd.id_cmd);
+      printf("CPF do Cliente: %s\n", cmd.cpf);
+      printf("Nome do Cliente: %s\n", nome);
+      printf("Valor Total    : R$ %.2f\n", valor_total);
+    }
+  }
+
+  fclose(fp);
+
+  if (!encontrou) {
+    printf("\nNenhuma comanda paga encontrada.\n");
+  }
+
+  printf("\n#-----------------------------------#\n");
+  printf("Pressione ENTER para continuar...");
+  getchar();
+}
+
+
+int comparar_horario(const void *a, const void *b) {
+  Pedido *p1 = (Pedido *)a;
+  Pedido *p2 = (Pedido *)b;
+  return strcmp(p1->hora, p2->hora);
+}
+
+
+void ordem_pedidos(void){
+  FILE *fp = fopen("pedidos.dat", "rb");
+  if (!fp) {
+    printf("Erro ao abrir o arquivo de pedidos.\n");
+    return;
+  }
+
+  Pedido pedidos[100];
+  int count = 0;
+
+  while (fread(&pedidos[count], sizeof(Pedido), 1, fp) == 1) {
+    if (pedidos[count].status == 1) {
+      count++;
+      if (count >= 100) break;
+    }
+  }
+  fclose(fp);
+
+  if (count == 0) {
+    printf("Não há pedidos ativos.\n");
+    return;
+  }
+
+  char nome[50];
+
+  
+  qsort(pedidos, count, sizeof(Pedido), comparar_horario);
+  
+  printf("\n--- RELATÓRIO DE PEDIDOS ATIVOS ---\n");
+  for (int i = 0; i < count; i++) {
+    buscar_nome(pedidos[i].cpf, nome, sizeof(nome));
+    printf("CPF: %s\t", pedidos[i].cpf);
+    printf("Nome: %s\n", nome);
+    printf("Código do Produto: %d\n", pedidos[i].id_produto);
+    printf("Quantidade: %d\n", pedidos[i].quantidade);
+    printf("Horário: %s\n", pedidos[i].hora);
+    printf("------------------------------\n");
+  }
+
+  printf("Pressione ENTER para continuar...");
+  getchar();
+}
+
+
+void relatorios(void){
+  limpaTela();
+
+  char opcao_cmd = tela_relatorios();
+
+  switch (opcao_cmd)
+  {
+  case '1':
+    pedidos_ativos();
+    break;
+  case '2':
+    ordem_pedidos();
+    break;
+  case '3':
+    comandas_ativas();
+    break;
+  case '4':
+    comandas_pagas();
+    break;
+  case '5':
+    exibe_pedido();
+    break;
+  default:
+    break;
+  }
+}
+
+
+char tela_relatorios (void){
+  limpaTela();
+
+  char op_ped;
+  
+  printf("Informe qual relatório deseja ver:\n");
+  printf("1 - Pedido(s) ativo(s) por cliente\n");
+  printf("2 - Pedidos ativos ordenados cronologicamente\n");
+  printf("3 - Comandas ativas\n");
+  printf("4 - Comandas pagas\n");
+  scanf(" %c", &op_ped);
+  getchar();
+  return op_ped;
 }

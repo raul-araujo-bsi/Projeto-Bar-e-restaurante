@@ -35,9 +35,13 @@ float exibe_valor(float valor);
 char cria_pedido(void);
 void faz_pedido(void);
 void exibe_comanda(const char* cpf);
+void pedidos_ativos(void);
 void exibe_pedido(void);
-
+int comparar_horario(const void *a, const void *b);
+void ordem_pedidos(void);
 void comandas_ativas(void);
-
+void comandas_pagas(void);
+char tela_relatorios (void);
+void relatorios(void);
 
 #endif //sugestão do GPT
