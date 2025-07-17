@@ -139,40 +139,39 @@ char* buscar_nome(char* cpf_alvo, char* nome, int tamanho) {
 }
 
 
-float calcular_total_pedidos(const char* cpf_alvo) {
-  FILE* fp = fopen("pedidos.dat", "rb");
+float calcular_total(char* cpf) {
+  FILE* fp_ped = fopen("pedidos.dat", "rb");
   Pedido ped;
   float total = 0;
 
-  if (!fp) return 0;
-
-  while (fread(&ped, sizeof(Pedido), 1, fp)) {
-    if (strcmp(ped.cpf, cpf_alvo) == 0) {
-        total += ped.valor;
+  while (fread(&ped, sizeof(Pedido), 1, fp_ped)) {
+    if (strcmp(ped.cpf, cpf) == 0 && ped.status == 1) {
+      total += ped.valor;
     }
   }
 
-  fclose(fp);
+  fclose(fp_ped);
   return total;
 }
 
 
-float calcula_valor(int id_produto, int quantidade) {
-  FILE* fp = fopen("produtos.dat", "rb");
-  Produto prod;
 
-  if (fp == NULL) {
+float calcula_valor(int id_produto, int quantidade) {
+  FILE* fp_prod = fopen("produtos.dat", "rb");
+  if (fp_prod == NULL) {
     printf("Erro ao abrir o arquivo produtos.dat\n");
-    return -1.0;
+    return 0;
   }
 
-  while (fread(&prod, sizeof(Produto), 1, fp)) {
+  Produto prod;
+
+  while (fread(&prod, sizeof(Produto), 1, fp_prod)) {
     if (prod.id == id_produto && prod.status == 1) {
-        fclose(fp);
-        return quantidade * prod.valor;
+      fclose(fp_prod);
+      return quantidade * prod.valor;
     }
   }
 
-  fclose(fp);
-  return -1.0;
+  fclose(fp_prod);
+  return 0;
 }

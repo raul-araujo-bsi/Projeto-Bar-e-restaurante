@@ -19,7 +19,6 @@ struct ped
 struct cmd 
 {
   char id_cmd[15];
-  int mesa;
   char cpf[13];
   float valor;
   int status;
@@ -32,9 +31,13 @@ void pesquisar_comanda(void);
 void atualizar_comanda(void);
 void cancelar_comanda(void);
 void ler_mesa(int* mesa);
-void exibe_valor(float valor);
+float exibe_valor(float valor);
 char cria_pedido(void);
 void faz_pedido(void);
+void exibe_comanda(void);
+void exibe_pedido(void);
+
+void comandas_ativas(void);
 
 
 #endif //sugestão do GPT
