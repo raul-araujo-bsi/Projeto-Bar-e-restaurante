@@ -28,7 +28,7 @@ void modulo_pedido(void);
 char tela_pedido(void);
 void abrir_comanda(void);
 void pesquisar_comanda(void);
-void atualizar_comanda(void);
+void realizar_pedido(void);
 void cancelar_comanda(void);
 void ler_mesa(int* mesa);
 float exibe_valor(float valor);

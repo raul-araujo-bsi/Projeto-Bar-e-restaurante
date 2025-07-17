@@ -39,8 +39,7 @@ char tela_pedido(void){
     printf("|                            | \n");
     printf("| 1 - ABRIR COMANDA          | \n");
     printf("| 2 - PESQUISAR COMANDA      | \n");
-    printf("| 3 - EDITAR COMANDA         | \n");
-    printf("| 4 - CANCELAR PEDIDO        | \n"); 
+    printf("| 3 - REALIZAR PEDIDO        | \n"); 
     printf("| 5 - PAGAMENTO              | \n");
     printf("| 6 - RELATÓRIO              | \n");
     printf("| 0 - SAIR                   | \n");
@@ -85,7 +84,7 @@ void pesquisar_comanda(void) {
 }
 
 
-void atualizar_comanda(void){
+void realizar_pedido(void){
   faz_pedido();
 }
 
