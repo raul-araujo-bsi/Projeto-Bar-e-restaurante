@@ -43,7 +43,7 @@ char tela_pedido(void){
     printf("| 0 - SAIR                   | \n");
     printf("|                            | \n");
     printf("#============================# \n");
-    scanf("%c", &op);
+    scanf(" %c", &op);
     getchar();
     return op;
 }
@@ -131,7 +131,7 @@ void finalizar_comanda(void) {
 
 void ler_mesa(int* mesa){
   printf("Digite o número da mesa: ");
-  scanf("%d", mesa);
+  scanf(" %d", mesa);
   getchar();
 }
 

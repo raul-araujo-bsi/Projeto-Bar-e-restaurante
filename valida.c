@@ -91,7 +91,7 @@ int valida_prod (int *id){
   Produto prod;
 
   printf("Digite o ID do produto: ");
-  scanf("%d", id);
+  scanf(" %d", id);
   getchar();
   
   rewind(fp);

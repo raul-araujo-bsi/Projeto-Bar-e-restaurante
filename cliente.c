@@ -43,7 +43,7 @@ char tela_cliente(void){
   printf("|  0 - RETORNAR              | \n");
   printf("|                            | \n");
   printf("#============================# \n");
-  scanf("%c", &op);
+  scanf(" %c", &op);
   getchar();
   return op;
 }

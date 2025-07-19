@@ -42,7 +42,7 @@ char tela_produtos(void) {
   printf("|  0 - Sair                  | \n");
   printf("|                            | \n");
   printf("#============================# \n");
-  scanf("%c", &op);
+  scanf(" %c", &op);
   getchar();
   return op;
 }
@@ -88,7 +88,7 @@ void pesquisar_produto(void) {
 
   do {
     printf("Digite o ID do produto: ");
-    scanf("%d", &id);
+    scanf(" %d", &id);
 
     rewind(fp);
     while (fread(&prod, sizeof(Produto), 1, fp)) {
@@ -119,7 +119,7 @@ void atualizar_produto(void) {
 
   int id_busca;
   printf("Digite o ID do produto para atualizar: ");
-  scanf("%d", &id_busca);
+  scanf(" %d", &id_busca);
   getchar();
 
   Produto prod;
@@ -138,7 +138,7 @@ void atualizar_produto(void) {
       printf("Qual campo deseja atualizar?\n");
       printf("1 - Quantidade\n2 - Valor\n");
       printf("Digite a opção: ");
-      scanf("%d", &opcao);
+      scanf(" %d", &opcao);
       getchar();
 
       switch (opcao) {
@@ -281,7 +281,7 @@ void ler_produto(char* produto){
 
 void ler_quantidade(int* qntd){
   printf("Digite a quantidade: ");
-  scanf("%d", qntd);
+  scanf(" %d", qntd);
   getchar();
 }
 
