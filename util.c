@@ -126,7 +126,7 @@ char* buscar_nome(const char* cpf_alvo, char* nome, int tamanho) {
   }
 
   while (fread(&cliente, sizeof(Cliente), 1, fp)) {
-    if (strcmp(cliente.cpf, cpf_alvo) == 0) {
+    if (cliente.status == 1 && strcmp(cliente.cpf, cpf_alvo) == 0) {
       strncpy(nome, cliente.nome, tamanho);
       nome[tamanho - 1] = '\0';
       fclose(fp);
@@ -141,6 +141,10 @@ char* buscar_nome(const char* cpf_alvo, char* nome, int tamanho) {
 
 float calcular_total(const char* cpf) {
   FILE* fp_ped = fopen("pedidos.dat", "rb");
+  if (fp_ped == NULL) {
+  printf("Erro ao abrir pedidos.dat\n");
+  return 0;
+  }
   Pedido ped;
   float total = 0;
 

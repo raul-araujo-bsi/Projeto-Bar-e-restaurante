@@ -9,7 +9,7 @@ int valida_nome (char *nome){
   int i;
   i = 0;
   do {
-    if (nome[0] == '\0') {
+    if (nome[0] == '\0' || nome[0] == ' ') {
     return 0;
     } else if (!isalpha(nome[i]) && nome[i] != ' ') {
       return 0;
@@ -84,7 +84,10 @@ int valida_email (char *email){
 
 int valida_prod (int *id){
   FILE *fp = fopen("produtos.dat", "rb");
-  
+  if (fp == NULL) {
+  printf("Erro ao abrir o arquivo de produtos.\n");
+  return 0;
+  }
   Produto prod;
 
   printf("Digite o ID do produto: ");
@@ -99,3 +102,4 @@ int valida_prod (int *id){
   }
   return 0;
 }
+

@@ -59,7 +59,7 @@ void cadastro_cliente(void){
     return;
   }
   
-  int cpf_existe;
+  int cpf_existe = 0;
   do {
     printf("#============================# \n");
     printf("           CADASTRO            \n");

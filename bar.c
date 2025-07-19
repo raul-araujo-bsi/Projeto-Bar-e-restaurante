@@ -27,6 +27,9 @@ int main (void) {
         break;
       case '4': sobre();
         break;
+      default:
+        printf("Opção inválida. Tente novamente.\n");
+        getchar();
     }
   } while (opcao != '0');
   saida();
@@ -40,8 +43,7 @@ char tela_principal(void) {
     printf("|        1 - CLIENTE         | \n");
     printf("|        2 - PEDIDO          | \n");
     printf("|        3 - PRODUTOS        | \n");
-    printf("|        4 - RELATORIOS      | \n");
-    printf("|        5 - SOBRE           | \n");
+    printf("|        4 - SOBRE           | \n");
     printf("|        0 - SAIR            | \n");
     printf("|                            | \n");
     printf("#============================# \n");
