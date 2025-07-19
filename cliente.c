@@ -65,14 +65,7 @@ void cadastro_cliente(void){
     printf("           CADASTRO            \n");
     printf("                               \n");
     ler_nome(cli->nome);
-    ler_cpf(cli -> cpf);    
-    
-    cpf_existe = 0;
-    printf("#============================# \n");
-    printf("           CADASTRO            \n\n");
-
-    ler_nome(cli->nome);
-    ler_cpf(cli->cpf);    
+    ler_cpf(cli -> cpf);  
 
     FILE* fp = fopen("clientes.dat", "rb");
     if (fp != NULL) {
