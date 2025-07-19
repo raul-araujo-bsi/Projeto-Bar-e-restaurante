@@ -84,6 +84,7 @@ void pesquisar_produto(void) {
   Produto prod;
   int id;
   char opcao;
+  int encontrado = 0;
 
   do {
     printf("Digite o ID do produto: ");
@@ -93,8 +94,11 @@ void pesquisar_produto(void) {
     while (fread(&prod, sizeof(Produto), 1, fp)) {
       if (prod.id == id && prod.status == 1) {
         exibir_produto(prod);
+        encontrado = 1;
         break;
       }
+    }
+    if (!encontrado) {
       printf("\nProduto não encontrado!\n");
       delay(3);
     }
@@ -203,7 +207,7 @@ void excluir_produto(void) {
 
   int id_busca;
   printf("Digite o ID do produto para excluir: ");
-  scanf("%d", &id_busca);
+  scanf(" %d", &id_busca);
   getchar();
 
   Produto prod;
@@ -219,7 +223,8 @@ void excluir_produto(void) {
       printf("Valor: %.2f\n", prod.valor);
 
       printf("Confirma exclusão? (s/n): ");
-      char confirma = getchar();
+      char confirma;
+      scanf(" %c", &confirma);
       getchar();
       if (confirma == 's' || confirma == 'S') {
         prod.status = 0;
@@ -242,6 +247,7 @@ void excluir_produto(void) {
 
 
 void exibir_produto(Produto prod) {
+  printf("\n\nID: %d\n", prod.id);
   printf("Fornecedor: %s\n", prod.fornecedor);
   printf("Produto: %s\n", prod.produto);
   printf("Quantidade: %d\n", prod.quantidade);

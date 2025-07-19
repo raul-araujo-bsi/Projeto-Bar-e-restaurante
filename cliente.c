@@ -13,9 +13,9 @@ void modulo_cliente(void){
   do {
     opcao = tela_cliente();
     switch(opcao){
-      char cpf_busca[13];
       case '1': cadastro_cliente();
-        break;
+      break;
+      char cpf_busca[13];
       case '2': pesquisar_cliente(cpf_busca);
         break;
       case '3': atualizar_cliente();
@@ -23,6 +23,7 @@ void modulo_cliente(void){
       case '4': excluir_cliente();
         break;
       case '5': relatorios_clientes();
+        break;
     }
   } while (opcao != '0');
 }
@@ -57,36 +58,42 @@ void cadastro_cliente(void){
     printf("Erro ao alocar memória.\n");
     return;
   }
-
-  printf("#============================# \n");
-  printf("           CADASTRO            \n");
-  printf("                               \n");
-  ler_nome(cli->nome);
-  ler_cpf(cli -> cpf);    
-
-  FILE* fp = fopen("clientes.dat", "ab+");
-  if (fp != NULL) {
-    Cliente temp;
-    while (fread(&temp, sizeof(Cliente), 1, fp)) {
-      if (temp.status == 1 && strcmp(temp.cpf, cli->cpf) == 0) {
-        printf("\nJá existe um cliente com este CPF cadastrado.\n");
-        fclose(fp);
-        free(cli);
-        delay(2);
-        ler_nome(cli->nome);
-        ler_cpf(cli -> cpf);
-        return;
-      }
-    }
-    fclose(fp);
-    ler_fone(cli -> fone);
-    ler_email(cli -> email);
-    cli -> status = 1;
+  
+  int cpf_existe;
+  do {
+    printf("#============================# \n");
+    printf("           CADASTRO            \n");
     printf("                               \n");
-    printf("#============================# \n");   
-    grava_cliente(cli);
-    free(cli);
-  }
+    ler_nome(cli->nome);
+    ler_cpf(cli -> cpf);    
+    
+    cpf_existe = 0;
+    printf("#============================# \n");
+    printf("           CADASTRO            \n\n");
+
+    ler_nome(cli->nome);
+    ler_cpf(cli->cpf);    
+
+    FILE* fp = fopen("clientes.dat", "rb");
+    if (fp != NULL) {
+      Cliente temp;
+      while (fread(&temp, sizeof(Cliente), 1, fp)) {
+        if (temp.status == 1 && strcmp(temp.cpf, cli->cpf) == 0) {
+          printf("\nJá existe um cliente com este CPF cadastrado.\n");
+          cpf_existe = 1;
+          break;
+        }
+      }
+      fclose(fp);
+    }
+  } while (cpf_existe);
+  ler_fone(cli -> fone);
+  ler_email(cli -> email);
+  cli -> status = 1;
+  printf("                               \n");
+  printf("#============================# \n");   
+  grava_cliente(cli);
+  free(cli);
 }
 
 
@@ -102,17 +109,20 @@ Cliente* pesquisar_cliente(char* cpf_busca) {
   
   Cliente* cli = (Cliente*) malloc(sizeof(Cliente));
   char opcao;
+  int encontrado = 0;
   
   do {
     ler_cpf(cpf);
     rewind(fp);
-    while(fread(cli, sizeof(Cliente), 1, fp)){
+    while (fread(cli, sizeof(Cliente), 1, fp)) {
       if (cli->status == 1 && strcmp(cli->cpf, cpf) == 0) {
         exibir_cliente(*cli);
+        encontrado = 1;
         break;
-      } else {
-        printf("\nCliente não encontrado!\n");
       }
+    }
+    if (!encontrado) {
+      printf("\nCliente não encontrado!\n");
     }
     printf("\nDeseja buscar outro cliente? (s/n): ");
     scanf(" %c", &opcao);
@@ -220,6 +230,7 @@ void relatorios_clientes(void) {
   }
 
   fclose(fp);
+  printf("\nPressione ENTER para continuar...");
   getchar();
 }
 
